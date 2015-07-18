@@ -22,6 +22,7 @@
 </p>
 -------
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
 
 [![Twitter: @KauseFx](https://img.shields.io/badge/contact-@KrauseFx-blue.svg?style=flat)](https://twitter.com/KrauseFx)
 [![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/spaceship/blob/master/LICENSE)
@@ -59,6 +60,8 @@ Why don't you have a simple web site you can share with potential testers (e.g. 
 Thanks to [spaceship.airforce](https://spacehip.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the baording process for your TestFlight beta testers.
 
 Just click the `Deploy Now` button below, login with your Heroku account, enter your iTunes Connect credentials and you're done!
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
 
 # How does this work?
 
