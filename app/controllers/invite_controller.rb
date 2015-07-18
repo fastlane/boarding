@@ -2,8 +2,9 @@ class InviteController < ApplicationController
   def index
     if user and password
       # default
+      @app_icon_url = app_icon_url
     else
-      render 'error'
+      render 'environment_error'
     end
   end
 
@@ -15,19 +16,23 @@ class InviteController < ApplicationController
 
     logger.info "Going to create a new tester: #{email} - #{first_name} #{last_name}"
 
-    Spaceship::Tunes.login(user, password)
+    begin
+      login
 
-    tester = Spaceship::Tunes::Tester::External.create!(email: email, 
-                                                        first_name: first_name, 
-                                                        last_name: last_name,
-                                                        group: group_name)
+      tester = Spaceship::Tunes::Tester::External.create!(email: email, 
+                                                          first_name: first_name, 
+                                                          last_name: last_name,
+                                                          group: group_name)
 
-    logger.info "Successfully created tester #{email}"
+      logger.info "Successfully created tester #{tester.email}"
 
-    if ENV["ITC_APP_ID"].to_s.length > 0
-      tester.add_to_app!(ENV["ITC_APP_ID"])
-    else
-      logger.info "No app to add this tester to provided, use the `ITC_APP_ID` environment variable"
+      if apple_id.length > 0
+        tester.add_to_app!(apple_id)
+      end
+    rescue => ex
+      Rails.logger.fatal ex.inspect
+      Rails.logger.fatal ex.backtrace.join("\n")
+      render 'register_error'
     end
   end
 
@@ -38,5 +43,28 @@ class InviteController < ApplicationController
 
     def password
       ENV["ITC_PASSWORD"] || ENV["FASTLANE_PASSWORD"]
+    end
+
+    def apple_id
+      Rails.logger.error "No app to add this tester to provided, use the `ITC_APP_ID` environment variable" unless ENV["ITC_APP_ID"]
+
+      ENV["ITC_APP_ID"].to_s
+    end
+
+    def app_icon_url
+      Rails.cache.fetch("appIcon/#{apple_id}", expires_in: 2.minutes) do
+        begin
+          login
+          application = Spaceship::Tunes::Application.find(apple_id)
+          application.app_icon_preview_url
+        rescue => ex
+          # ignoring the fact that we don't have an app icon
+        end
+      end
+    end
+
+    def login
+      return if @spaceship
+      @spaceship = Spaceship::Tunes.login(user, password)
     end
 end

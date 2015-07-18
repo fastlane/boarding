@@ -1,3 +1,5 @@
+<%= image_tag @app_icon_url %>
+
 <%= form_tag("/submit", method: "post") do %>
   <%= label_tag(:first_name, "First Name:") %>
   <%= text_field_tag(:first_name) %><br />
