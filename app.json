@@ -20,7 +20,8 @@
     },
     "ITC_GROUP_NAME": {
       "description": "Optional: You can add the tester to a tester-group. Will be `Boarding` by default.",
-      "required": false
+      "required": false,
+      "default": "Boarding"
     }
   }
 }

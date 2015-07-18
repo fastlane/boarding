@@ -166,7 +166,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  spaceship
+  spaceship (>= 0.1.0)
   spring
   sqlite3
   uglifier (>= 1.3.0)
