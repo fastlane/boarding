@@ -1,8 +1,9 @@
 class InviteController < ApplicationController
+  before_action :set_app_icon
+
   def index
     if user and password
       # default
-      @app_icon_url = app_icon_url
     else
       render 'environment_error'
     end
@@ -18,7 +19,6 @@ class InviteController < ApplicationController
 
     begin
       login
-
       tester = Spaceship::Tunes::Tester::External.create!(email: email, 
                                                           first_name: first_name, 
                                                           last_name: last_name,
@@ -29,11 +29,23 @@ class InviteController < ApplicationController
       if apple_id.length > 0
         tester.add_to_app!(apple_id)
       end
+
+      @message = "Successfully added you as tester. You'll be notified once the next build is available"
+      @type = "success"
     rescue => ex
-      Rails.logger.fatal ex.inspect
-      Rails.logger.fatal ex.backtrace.join("\n")
-      render 'register_error'
+      if ex.inspect.to_s.include?"EmailExists"
+        @message = "Email address is already registered"
+        @type = "danger"
+      else
+        Rails.logger.fatal ex.inspect
+        Rails.logger.fatal ex.backtrace.join("\n")
+
+        @message = "Something went wrong, please contact the application owner"
+        @type = "danger"
+      end
     end
+
+    render :index
   end
 
   private
@@ -51,20 +63,24 @@ class InviteController < ApplicationController
       ENV["ITC_APP_ID"].to_s
     end
 
+    def app
+      login
+
+      @app ||= Spaceship::Tunes::Application.find(apple_id)
+    end
+
     def app_icon_url
-      Rails.cache.fetch("appIcon/#{apple_id}", expires_in: 2.minutes) do
-        begin
-          login
-          application = Spaceship::Tunes::Application.find(apple_id)
-          application.app_icon_preview_url
-        rescue => ex
-          # ignoring the fact that we don't have an app icon
-        end
+      Rails.cache.fetch('appIcon', expires_in: 5.minutes) do
+        app.app_icon_preview_url
       end
     end
 
     def login
       return if @spaceship
       @spaceship = Spaceship::Tunes.login(user, password)
+    end
+
+    def set_app_icon
+      @app_icon_url = app_icon_url
     end
 end
