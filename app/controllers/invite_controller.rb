@@ -30,7 +30,11 @@ class InviteController < ApplicationController
         tester.add_to_app!(apple_id)
       end
 
-      @message = "Successfully added you as tester. You'll be notified once the next build is available"
+      if testing_is_live?
+        @message = "Successfully added you as tester. Check your email inbox for an invite"
+      else
+        @message = "Successfully added you as tester. You'll be notified once the next build is available"
+      end
       @type = "success"
     rescue => ex
       if ex.inspect.to_s.include?"EmailExists"
@@ -86,5 +90,17 @@ class InviteController < ApplicationController
 
     def set_app_icon
       @app_icon_url = app_icon_url
+    end
+
+    # @return [Boolean] Is at least one TestFlight beta testing build available?
+    def testing_is_live?
+      app.build_trains.each do |version, train|
+        if train.testing_enabled
+          train.builds.each do |build|
+            return true if build.external_testing_enabled
+          end
+        end
+      end
+      return false
     end
 end
