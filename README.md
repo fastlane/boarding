@@ -18,7 +18,7 @@
 -------
 
 <p align="center">
-  <img src="assets/spaceship.png" width="470">
+  <img src="assets/boarding.png" width="470">
 </p>
 -------
 
@@ -46,6 +46,23 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 <h5 align="center"><code>boarding</code> is part of <a href="https://fastlane.tools">fastlane</a>: connect all deployment tools into one streamlined workflow.</h5>
 
+# What's boarding?
+
+> Have you ever been to an airport, where you had to ask the manager of the airport if you can board now? Once the manager agrees, you'll be carried from your check-in to your gate into your plane.
+
+Because that's what you do right now as an app developer: 
+
+![OldWay](https://raw.githubusercontent.com/fastlane/boarding/master/OldWay.jpg)
+
+Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
+
+Thanks to [spaceship.airforce](https://spacehip.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the baording process for your beta testers.
+
+Just click the `Deploy Now` button below, login with your Heroku account, enter your iTunes Connect credentials and you're done!
+
+# How does this work?
+
+`boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer. Using [spaceship.airforce](https://spacehip.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
 
 ##### [Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
 
