@@ -67,6 +67,10 @@ class InviteController < ApplicationController
       login
 
       @app ||= Spaceship::Tunes::Application.find(apple_id)
+
+      raise "Could not find app with ID #{apple_id}" unless @app
+
+      @app
     end
 
     def app_icon_url
