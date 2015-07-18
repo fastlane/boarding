@@ -1,0 +1,10 @@
+<%= form_tag("/submit", method: "post") do %>
+  <%= label_tag(:first_name, "First Name:") %>
+  <%= text_field_tag(:first_name) %><br />
+  <%= label_tag(:last_name, "Last Name:") %>
+  <%= text_field_tag(:last_name) %><br />
+  <%= label_tag(:email, "Email Address:") %>
+  <%= email_field_tag(:email) %>
+  <br />
+  <%= submit_tag("Submit") %>
+<% end %>
