@@ -1,0 +1,26 @@
+{
+  "name": "TestFlight boarding",
+  "description": "A simple web page to register as beta tester for a TestFlight app",
+  "repository": "https://github.com/fastlane/boarding",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["Testflight", "Spaceship", "fastlane", "invite"],
+  "website": "https://github.com/fastlane/boarding",
+  "env": {
+    "ITC_USER": {
+      "description": "Your iTunes Connect username",
+      "required": true
+    },
+    "ITC_PASSWORD": {
+      "description": "Your iTunes Connect password",
+      "required": true
+    },
+    "ITC_APP_ID": {
+      "description": "The App ID of your app from iTunes Connect, to which the tester will be invited.",
+      "required": false
+    },
+    "ITC_GROUP_NAME": {
+      "description": "Optional: You can add the tester to a tester-group. Will be `Boarding` by default.",
+      "required": false
+    }
+  }
+}

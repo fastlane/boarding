@@ -50,13 +50,13 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 > Have you ever been to an airport, where you had to ask the manager of the airport if you can board now? Once the manager agrees, you'll be carried from your check-in to your gate into your plane.
 
-Because that's what you do right now as an app developer: 
+Because that's what you do right now as an app developer when you want to add a new tester to your TestFlight app: 
 
 ![OldWay](https://raw.githubusercontent.com/fastlane/boarding/master/OldWay.jpg)
 
 Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
 
-Thanks to [spaceship.airforce](https://spacehip.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the baording process for your beta testers.
+Thanks to [spaceship.airforce](https://spacehip.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the baording process for your TestFlight beta testers.
 
 Just click the `Deploy Now` button below, login with your Heroku account, enter your iTunes Connect credentials and you're done!
 

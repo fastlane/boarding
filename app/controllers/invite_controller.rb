@@ -24,10 +24,10 @@ class InviteController < ApplicationController
 
     logger.info "Successfully created tester #{email}"
 
-    if ENV["APP_ID"].to_s.length > 0
-      tester.add_to_app!(ENV["APP_ID"])
+    if ENV["ITC_APP_ID"].to_s.length > 0
+      tester.add_to_app!(ENV["ITC_APP_ID"])
     else
-      logger.info "No app to add this tester to provided, use the `APP_ID` environment variable"
+      logger.info "No app to add this tester to provided, use the `ITC_APP_ID` environment variable"
     end
   end
 

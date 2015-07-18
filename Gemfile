@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Added by Felix
-gem 'spaceship'
+gem 'spaceship', '>= 0.1.0'
 
 
 group :development, :test do
