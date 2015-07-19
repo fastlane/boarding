@@ -15,6 +15,16 @@
       <%= text_field_tag :last_name, '', class: "form-control", placeholder: "Last Name" %><br />
       <%= label_tag(:email, "Email Address:") %>
       <%= email_field_tag :email, '', class: "form-control", placeholder: "Email Address" %><br />
+      
+      <% if ENV["ITC_TOKEN"] %>
+        <% if params[:token] %>
+          <%= hidden_field_tag :token, '', value: params[:token] %>
+        <% else %>
+          <%= label_tag(:token, "Password:") %>
+          <%= text_field_tag :token, class: "form-control", placeholder: "Password" %><br />
+        <% end %>
+      <% end %>
+
       <br />
       <%= submit_tag "Get Beta Access", class: 'btn btn-lg btn-primary btn-block' %>
     <% end %>

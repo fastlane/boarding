@@ -15,6 +15,15 @@ class InviteController < ApplicationController
     last_name = params[:last_name]
     group_name = ENV["ITC_GROUP_NAME"] || "Boarding"
 
+    if ENV["ITC_TOKEN"]
+      if ENV["ITC_TOKEN"] != params[:token]
+        @message = "Invalid password given, please contact the application owner"
+        @type = "danger"
+        render :index
+        return
+      end
+    end
+
     if email.length == 0
       render :index
       return

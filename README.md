@@ -49,7 +49,7 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 Because that's what you do right now as an app developer when you want to add a new tester to your TestFlight app: 
 
-![OldWay](https://raw.githubusercontent.com/fastlane/boarding/master/OldWay.jpg)
+[Open Screenshots](https://raw.githubusercontent.com/fastlane/boarding/master/OldWay.jpg)
 
 Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
 
@@ -59,9 +59,31 @@ Just click the `Deploy Now` button below, login with your Heroku account, enter 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
 
+# Getting Started
+
+## Security
+
+To secure your webpage, you only have to set the `ITC_TOKEN` environment variable to any password. 
+
+- You can send your users the link and tell them the password
+- You can send them the direct link including the token like this: https://url.com/?token=[password]
+
+## Available environment variables
+
+**Required:**
+
+- `ITC_USER` iTunes Connect username
+- `ITC_PASSWORD` iTunes Connect password
+- `ITC_APP_ID` The Apple ID or Bundle Identifier of your app
+
+**Optional:**
+- `ITC_GROUP_NAME` The name of the group the user should be added to. `Boarding` by default
+- `ITC_TOKEN` Set a password to protect your website from random people signing up
+
 # How does this work?
 
 `boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer. Using [spaceship.airforce](https://spacehip.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
+
 
 # Update to a new version
 
