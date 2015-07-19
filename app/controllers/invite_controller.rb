@@ -29,6 +29,13 @@ class InviteController < ApplicationController
       return
     end
 
+    if ENV["ITC_IS_DEMO"]
+      @message = "This is a demo page. Here would be the success message with information about the TestFlight email"
+      @type = "success"
+      render :index
+      return
+    end
+
     logger.info "Going to create a new tester: #{email} - #{first_name} #{last_name}"
 
     begin
