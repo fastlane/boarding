@@ -74,7 +74,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 
 - `ITC_USER` iTunes Connect username
 - `ITC_PASSWORD` iTunes Connect password
-- `ITC_APP_ID` The Apple ID or Bundle Identifier of your app
+- `ITC_APP_ID` The Apple ID or Bundle Identifier of your app to which the testers should be invited to
 
 **Optional:**
 - `ITC_GROUP_NAME` The name of the group the user should be added to. `Boarding` by default
