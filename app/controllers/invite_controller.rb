@@ -1,5 +1,5 @@
 class InviteController < ApplicationController
-  before_action :set_app_icon
+  before_action :set_app_details
 
   def index
     if user and password
@@ -14,6 +14,11 @@ class InviteController < ApplicationController
     first_name = params[:last_name]
     last_name = params[:first_name]
     group_name = ENV["ITC_GROUP_NAME"] || "Boarding"
+
+    if email.length == 0
+      render :index
+      return
+    end
 
     logger.info "Going to create a new tester: #{email} - #{first_name} #{last_name}"
 
@@ -77,9 +82,12 @@ class InviteController < ApplicationController
       @app
     end
 
-    def app_icon_url
-      Rails.cache.fetch('appIcon', expires_in: 5.minutes) do
-        app.app_icon_preview_url
+    def app_metadata
+      Rails.cache.fetch('appMetadata', expires_in: 5.minutes) do
+        {
+          icon_url: app.app_icon_preview_url,
+          title: app.name
+        }
       end
     end
 
@@ -88,8 +96,9 @@ class InviteController < ApplicationController
       @spaceship = Spaceship::Tunes.login(user, password)
     end
 
-    def set_app_icon
-      @app_icon_url = app_icon_url
+    def set_app_details
+      @metadata = app_metadata
+      @title = @metadata[:title]
     end
 
     # @return [Boolean] Is at least one TestFlight beta testing build available?

@@ -1,11 +1,13 @@
 <div class="container" style="text-align: center; width: 350px">
-  <% if @app_icon_url %>
-    <%= image_tag @app_icon_url %>
+  <% if @metadata[:icon_url] %>
+    <%= image_tag @metadata[:icon_url] %>
   <% else %>
     <div style="margin-bottom: 50px"></div>
   <% end %>
 
   <% unless @message %>
+    <h4 class="" style="margin-bottom: 40px;"><%= @metadata[:title] %></h4>
+
     <%= form_tag("/submit", method: "post", style: "text-align: left") do %>
       <%= label_tag(:first_name, "First Name:") %>
       <%= text_field_tag :first_name, '', class: "form-control", placeholder: "First Name" %><br />
@@ -14,7 +16,7 @@
       <%= label_tag(:email, "Email Address:") %>
       <%= email_field_tag :email, '', class: "form-control", placeholder: "Email Address" %><br />
       <br />
-      <%= submit_tag "Submit", class: 'btn btn-lg btn-primary btn-block' %>
+      <%= submit_tag "Get Beta Access", class: 'btn btn-lg btn-primary btn-block' %>
     <% end %>
   <% else %>
     <p class="alert alert-<%= @type %>">

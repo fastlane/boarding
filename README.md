@@ -25,10 +25,7 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
 
 [![Twitter: @KauseFx](https://img.shields.io/badge/contact-@KrauseFx-blue.svg?style=flat)](https://twitter.com/KrauseFx)
-[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/spaceship/blob/master/LICENSE)
-[![Coverage Status](https://coveralls.io/repos/fastlane/spaceship/badge.svg?branch=master&t=ldL8gg)](https://coveralls.io/r/fastlane/spaceship?branch=master)
-[![Gem](https://img.shields.io/gem/v/spaceship.svg?style=flat)](http://rubygems.org/gems/spaceship)
-[![Build Status](https://img.shields.io/travis/fastlane/spaceship/master.svg?style=flat)](https://travis-ci.org/fastlane/spaceship)
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/boarding/blob/master/LICENSE))
 
 
 Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/KrauseFx/)
