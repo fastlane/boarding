@@ -22,7 +22,6 @@
 </p>
 -------
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
 [![Twitter: @KauseFx](https://img.shields.io/badge/contact-@KrauseFx-blue.svg?style=flat)](https://twitter.com/KrauseFx)
 [![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/boarding/blob/master/LICENSE)
 
@@ -84,7 +83,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 
 - `ITC_USER` iTunes Connect username
 - `ITC_PASSWORD` iTunes Connect password
-- `ITC_APP_ID` The Apple ID or Bundle Identifier of your app to which the testers should be invited to
+- `ITC_APP_ID` The Apple ID or Bundle Identifier of your app
 
 **Optional:**
 - `ITC_GROUP_NAME` The name of the group the user should be added to. `Boarding` by default
@@ -99,7 +98,7 @@ Using [spaceship.airforce](https://spacehip.airforce) it is possible to manage t
 This repository is a simple Rails application with most code in these files:
 
 - [invite_controller.rb](https://github.com/fastlane/boarding/blob/master/app/controllers/invite_controller.rb)
-- [invite/index.html.erb](httpshttps://github.com/fastlane/boarding/blob/master/app/views/invite/index.html.erb)
+- [invite/index.html.erb](https://github.com/fastlane/boarding/blob/master/app/views/invite/index.html.erb)
 
 # Customize
 
