@@ -32,11 +32,11 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 -------
 <p align="center">
-    <a href="#whats-spaceship">Why?</a> &bull;
-    <a href="#usage">Usage</a> &bull;
-    <a href="#installation">Installation</a> &bull;
-    <a href="#technical-details">Technical Details</a> &bull;
-    <a href="#need-help">Need help?</a>
+    <a href="#whats-boarding">Why?</a> &bull;
+    <a href="#getting-started">Getting Started</a> &bull;
+    <a href="#how-does-this-work">Technical Details</a> &bull;
+    <a href="#customize">Customize</a> &bull;
+    <a href="#update-to-a-new-version">Update</a>
 </p>
 
 -------
@@ -47,19 +47,25 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 > Have you ever been to an airport, where you had to ask the manager of the airport if you can board now? Once the manager agrees, you'll be carried from your check-in to your gate into your plane.
 
-Because that's what you do right now as an app developer when you want to add a new tester to your TestFlight app: 
-
-[Open Screenshots](https://raw.githubusercontent.com/fastlane/boarding/master/OldWay.jpg)
+Because that's what you do right now as an app developer when you want to add a new tester to your TestFlight app: [Open Screenshots](https://raw.githubusercontent.com/fastlane/boarding/master/OldWay.jpg)
 
 Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
 
-Thanks to [spaceship.airforce](https://spacehip.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the baording process for your TestFlight beta testers.
+Thanks to [spaceship.airforce](https://spacehip.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the boarding process for your TestFlight beta testers.
 
-Just click the `Deploy Now` button below, login with your Heroku account, enter your iTunes Connect credentials and you're done!
+Just click the [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding) button, login with your Heroku account, enter your iTunes Connect credentials and you're done!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
+##### [Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
 
 # Getting Started
+
+Assuming you already have a [Heroku](https://heroku.com) account follow those steps:
+
+- [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
+- Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
+- Click on `View App` once the setup is complete and start sharing the URL
+
+Heroku is free to use for the standard machine. If you need a Heroku account, ask your back-end team if you already have a company account. 
 
 ## Security
 
@@ -82,16 +88,36 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 
 # How does this work?
 
-`boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer. Using [spaceship.airforce](https://spacehip.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
+`boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer. 
 
+Using [spaceship.airforce](https://spacehip.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
+
+This repository is a simple Rails application with most code in these files:
+
+- [invite_controller.rb](https://github.com/fastlane/boarding/blob/master/app/controllers/invite_controller.rb)
+- [invite/index.html.erb](httpshttps://github.com/fastlane/boarding/blob/master/app/views/invite/index.html.erb)
+
+# Customize
+
+If you want to change the design, layout or even add new features:
+
+- Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
+- Clone your application using `heroku clone --app [heroku_app_name]`
+- `cd [heroku_app_name]`
+- Modify the content, in particular the files that are described above.
+- Test it locally by running `ITC_USER="email" ITC_... rails s` and opening [http://127.0.0.1:3000](http://127.0.0.1:3000)
+- Commit the changes
+- `git push`
+
+It is recommended to also store your version in your git repo additionally to Heroku.
 
 # Update to a new version
 
-There are 2 ways to update your Heroku application:
+From time to time there will be updates to `boarding`. There are 2 ways to update your Heroku application:
 
 ### Recommended: Using the terminal
 
-- Install the Heroku toolbelt and `heroku login`
+- Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
 - Clone your application using `heroku clone --app [heroku_app_name]`
 - `cd [heroku_app_name]`
 - `git pull https://github.com/fastlane/boarding`
