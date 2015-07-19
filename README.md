@@ -68,6 +68,8 @@ Assuming you already have a [Heroku](https://heroku.com) account follow those st
 - Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
 - Click on `View App` once the setup is complete and start sharing the URL
 
+`boarding` does all kinds of magic for you, like fetching the app name and app icon.
+
 Heroku is free to use for the standard machine. If you need a Heroku account, ask your back-end team if you already have a company account. 
 
 ## Security
@@ -88,6 +90,10 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 **Optional:**
 - `ITC_GROUP_NAME` The name of the group the user should be added to. `Boarding` by default
 - `ITC_TOKEN` Set a password to protect your website from random people signing up
+
+## Custom Domain
+
+With Heroku you can easily use your own domain, follow [this guide](https://devcenter.heroku.com/articles/custom-domains).
 
 # How does this work?
 
