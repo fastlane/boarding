@@ -11,8 +11,8 @@ class InviteController < ApplicationController
 
   def submit
     email = params[:email]
-    first_name = params[:last_name]
-    last_name = params[:first_name]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
     group_name = ENV["ITC_GROUP_NAME"] || "Boarding"
 
     logger.info "Going to create a new tester: #{email} - #{first_name} #{last_name}"
