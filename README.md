@@ -23,9 +23,8 @@
 -------
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
-
 [![Twitter: @KauseFx](https://img.shields.io/badge/contact-@KrauseFx-blue.svg?style=flat)](https://twitter.com/KrauseFx)
-[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/boarding/blob/master/LICENSE))
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/boarding/blob/master/LICENSE)
 
 
 Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/KrauseFx/)
@@ -63,6 +62,24 @@ Just click the `Deploy Now` button below, login with your Heroku account, enter 
 # How does this work?
 
 `boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer. Using [spaceship.airforce](https://spacehip.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
+
+# Update to a new version
+
+There are 2 ways to update your Heroku application:
+
+### Recommended: Using the terminal
+
+- Install the Heroku toolbelt and `heroku login`
+- Clone your application using `heroku clone --app [heroku_app_name]`
+- `cd [heroku_app_name]`
+- `git pull https://github.com/fastlane/boarding`
+- `git push`
+
+### Using Heroku website
+
+- Delete your application on [heroku.com](https://heroku.com)
+- [Create a new boarding application](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
+- Enter your user credentials again
 
 ##### [Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
 
