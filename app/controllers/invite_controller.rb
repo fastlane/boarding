@@ -1,5 +1,6 @@
 class InviteController < ApplicationController
   before_action :set_app_details
+  before_action :check_disabled_text
 
   def index
     if user and password
@@ -10,6 +11,11 @@ class InviteController < ApplicationController
   end
 
   def submit
+    if @message # from a `before_action`
+      render :index
+      return
+    end
+
     email = params[:email]
     first_name = params[:first_name]
     last_name = params[:last_name]
@@ -115,6 +121,13 @@ class InviteController < ApplicationController
     def set_app_details
       @metadata = app_metadata
       @title = @metadata[:title]
+    end
+
+    def check_disabled_text
+      if ENV["ITC_CLOSED_TEXT"]
+        @message = ENV["ITC_CLOSED_TEXT"]
+        @type = "warning"
+      end
     end
 
     # @return [Boolean] Is at least one TestFlight beta testing build available?

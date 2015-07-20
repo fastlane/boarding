@@ -90,6 +90,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 **Optional:**
 - `ITC_GROUP_NAME` The name of the group the user should be added to. `Boarding` by default
 - `ITC_TOKEN` Set a password to protect your website from random people signing up
+- `ITC_CLOSED_TEXT` Set this text to temporary disable enrollment of new beta testers
 
 ## Custom Domain
 
