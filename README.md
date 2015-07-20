@@ -18,7 +18,7 @@
 -------
 
 <p align="center">
-  <img src="assets/boarding.png" width="470">
+  <img src="assets/BoardingHuge.png" width="470">
 </p>
 -------
 
@@ -46,7 +46,7 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 > Have you ever been to an airport, where you had to ask the manager of the airport if you can board now? Once the manager agrees, you'll be carried from your check-in to your gate into your plane.
 
-Because that's what you do right now as an app developer when you want to add a new tester to your TestFlight app: [Open Screenshots](https://raw.githubusercontent.com/fastlane/boarding/master/OldWay.jpg)
+Because that's what you do right now as an app developer when you want to add a new tester to your TestFlight app: [Open Screenshots](https://raw.githubusercontent.com/fastlane/boarding/master/assets/OldWay.jpg)
 
 Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
 
