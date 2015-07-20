@@ -18,7 +18,7 @@
 -------
 
 <p align="center">
-  <img src="assets/BoardingHuge.png" width="470">
+  <img src="assets/BoardingHuge.png" width="650">
 </p>
 -------
 
