@@ -1,4 +1,4 @@
-<div class="container" style="text-align: center; width: 350px; padding-top: 20px;">
+<div class="container" style="text-align: center; max-width: 350px; padding-top: 20px;">
   <% if @metadata[:icon_url] %>
     <%= image_tag @metadata[:icon_url], class: "appIcon", style: "margin-bottom: 30px;" %>
   <% else %>
@@ -28,7 +28,7 @@
       <% end %>
 
       <br />
-      <%= submit_tag "Get Beta Access", class: 'btn btn-lg btn-primary btn-block' %>
+      <%= submit_tag "Get Beta Access", class: 'btn btn-lg btn-primary btn-block', id: "submit" %>
     <% end %>
   <% else %>
     <p class="alert alert-<%= @type %>">
@@ -45,5 +45,8 @@
             border-radius: 22.544%;
 
     width: 256px;
+  }
+  #submit {
+    margin-bottom: 20px;
   }
 </style>

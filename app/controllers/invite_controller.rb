@@ -99,7 +99,7 @@ class InviteController < ApplicationController
     end
 
     def app_metadata
-      Rails.cache.fetch('appMetadata', expires_in: 5.minutes) do
+      Rails.cache.fetch('appMetadata', expires_in: 10.minutes) do
         {
           icon_url: app.app_icon_preview_url,
           title: app.name
