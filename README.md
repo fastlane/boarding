@@ -44,6 +44,8 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 # What's boarding?
 
+`boarding` is the easiest way to invite your TestFlight beta testers.
+
 > Have you ever been to an airport, where you had to ask the manager of the airport if you can board now? Once the manager agrees, you'll be carried from your check-in to your gate into your plane.
 
 Because that's what you do right now as an app developer when you want to add a new tester to your TestFlight app: [Open Screenshots](https://raw.githubusercontent.com/fastlane/boarding/master/assets/OldWay.jpg)
@@ -54,9 +56,9 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 
 ### Example
 
-Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
+#####Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
 
-##### [Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
+[Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
 
 # Getting Started
 
