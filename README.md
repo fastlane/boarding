@@ -50,7 +50,7 @@ Because that's what you do right now as an app developer when you want to add a 
 
 Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
 
-Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the boarding process for your TestFlight beta testers.
+Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really talk a lot about flying :rocket:) it is now possible to automate the boarding process for your TestFlight beta testers.
 
 Just click the [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding) button, login with your Heroku account, enter your iTunes Connect credentials and you're done!
 
