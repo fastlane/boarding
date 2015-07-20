@@ -52,8 +52,6 @@ Why don't you have a simple web site you can share with potential testers (e.g. 
 
 Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really talk a lot about flying :rocket:) it now possible to automate the boarding process for your TestFlight beta testers.
 
-Just click the [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding) button, login with your Heroku account, enter your iTunes Connect credentials and you're done!
-
 ### Example
 
 Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
