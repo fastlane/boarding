@@ -57,6 +57,8 @@ Why don't you have a simple web site you can share with potential testers (e.g. 
 
 Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really talk a lot about flying :rocket:) it is now possible to automate the boarding process for your TestFlight beta testers.
 
+![BoardingOverview](assets/BoardingOverview.png)
+
 ### Example
 
 #####Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
