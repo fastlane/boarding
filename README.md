@@ -66,7 +66,7 @@ Assuming you already have a [Heroku](https://heroku.com) account follow those st
 
 - [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
 - Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
-- Click on `View App` once the setup is complete and start sharing the URL
+- Click on `View` once the setup is complete and start sharing the URL
 
 `boarding` does all kinds of magic for you, like fetching the app name and app icon.
 
@@ -88,7 +88,6 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 - `ITC_APP_ID` The Apple ID or Bundle Identifier of your app
 
 **Optional:**
-- `ITC_GROUP_NAME` The name of the group the user should be added to. `Boarding` by default
 - `ITC_TOKEN` Set a password to protect your website from random people signing up
 - `ITC_CLOSED_TEXT` Set this text to temporary disable enrollment of new beta testers
 

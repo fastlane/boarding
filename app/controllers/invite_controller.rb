@@ -19,7 +19,6 @@ class InviteController < ApplicationController
     email = params[:email]
     first_name = params[:first_name]
     last_name = params[:last_name]
-    group_name = ENV["ITC_GROUP_NAME"] || "Boarding"
 
     if ENV["ITC_TOKEN"]
       if ENV["ITC_TOKEN"] != params[:token]
@@ -46,15 +45,21 @@ class InviteController < ApplicationController
 
     begin
       login
-      tester = Spaceship::Tunes::Tester::External.create!(email: email, 
-                                                          first_name: first_name, 
-                                                          last_name: last_name,
-                                                          group: group_name)
+
+      tester = Spaceship::Tunes::Tester::Internal.find(config[:email])
+      tester ||= Spaceship::Tunes::Tester::External.find(config[:email])
+      Helper.log.info "Existing tester #{tester.email}".green if tester
+
+      tester ||= Spaceship::Tunes::Tester::External.create!(email: email, 
+                                                            first_name: first_name, 
+                                                            last_name: last_name)
 
       logger.info "Successfully created tester #{tester.email}"
 
       if apple_id.length > 0
+        logger.info "Addding tester to application"
         tester.add_to_app!(apple_id)
+        logger.info "Done"
       end
 
       if testing_is_live?
@@ -90,14 +95,22 @@ class InviteController < ApplicationController
 
     def apple_id
       Rails.logger.error "No app to add this tester to provided, use the `ITC_APP_ID` environment variable" unless ENV["ITC_APP_ID"]
-
-      ENV["ITC_APP_ID"].to_s
+      
+      Rails.cache.fetch('AppID', expires_in: 10.minutes) do
+        if ENV["ITC_APP_ID"].include?"." # app identifier
+          login
+          app = Spaceship::Application.find(ENV["ITC_APP_ID"])
+          app.apple_id
+        else
+          ENV["ITC_APP_ID"].to_s
+        end
+      end
     end
 
     def app
       login
 
-      @app ||= Spaceship::Tunes::Application.find(apple_id)
+      @app ||= Spaceship::Tunes::Application.find(ENV["ITC_APP_ID"])
 
       raise "Could not find app with ID #{apple_id}" unless @app
 

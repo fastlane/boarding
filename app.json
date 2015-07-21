@@ -18,11 +18,6 @@
       "description": "The App ID or App Identifier of your app from iTunes Connect, to which the tester will be invited.",
       "required": true
     },
-    "ITC_GROUP_NAME": {
-      "description": "Optional: You can add the tester to a tester-group. Will be `Boarding` by default.",
-      "required": false,
-      "default": "Boarding"
-    },
     "ITC_TOKEN": {
       "description": "Optional: Set a password to protect your website from random people signing up.",
       "required": false
