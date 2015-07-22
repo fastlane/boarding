@@ -77,7 +77,11 @@ Assuming you already have a [Heroku](https://heroku.com) account follow those st
 
 Heroku is free to use for the standard machine. If you need a Heroku account, ask your back-end team if you already have a company account. 
 
+---
+
 ![SetupGif](assets/BoardingSetup.gif)
+
+---
 
 ## Security
 
