@@ -55,9 +55,9 @@ Because that's what you do right now as an app developer when you want to add a 
 
 Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
 
-Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really talk a lot about flying :rocket:) it is now possible to automate the boarding process for your TestFlight beta testers.
+![BoardingScreenshot](assets/BoardingScreenshot.png)
 
-![BoardingOverview](assets/BoardingOverview.png)
+Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really talk a lot about flying :rocket:) it is now possible to automate the boarding process for your TestFlight beta testers.
 
 ### Example
 
@@ -82,8 +82,6 @@ Heroku is free to use for the standard machine. If you need a Heroku account, as
 ![SetupGif](assets/BoardingSetup.gif)
 
 ---
-
-![BoardingScreenshot](assets/BoardingScreenshot.png)
 
 ## Security
 
@@ -118,6 +116,10 @@ This repository is a simple Rails application with most code in these files:
 
 - [invite_controller.rb](https://github.com/fastlane/boarding/blob/master/app/controllers/invite_controller.rb)
 - [invite/index.html.erb](https://github.com/fastlane/boarding/blob/master/app/views/invite/index.html.erb)
+
+![BoardingOverview](assets/BoardingOverview.png)
+
+More information about this automation process on [my blog](https://krausefx.com).
 
 # Customize
 
