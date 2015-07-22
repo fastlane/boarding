@@ -155,6 +155,10 @@ From time to time there will be updates to `boarding`. There are 2 ways to updat
 
 ##### [Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
 
+### Special thanks
+
+Special thanks to [@lee_moonan](https://twitter.com/lee_moonan) for designing the awesome logo.
+
 # License
 This project is licensed under the terms of the MIT license. See the LICENSE file.
 
