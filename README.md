@@ -83,6 +83,8 @@ Heroku is free to use for the standard machine. If you need a Heroku account, as
 
 ---
 
+![iPhoneScreenshot](assets/iOSScreenshot.png)
+
 ## Security
 
 To secure your webpage, you only have to set the `ITC_TOKEN` environment variable to any password. 
