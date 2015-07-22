@@ -47,7 +47,7 @@ Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/Kr
 
 # What's boarding?
 
-`boarding` is the easiest way to invite your TestFlight beta testers.
+Instantly create a simple signup page for TestFlight beta testers.
 
 > Have you ever been to an airport, where you had to ask the manager of the airport if you can board now? Once the manager agrees, you'll be carried from your check-in to your gate into your plane.
 
