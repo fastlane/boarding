@@ -83,7 +83,7 @@ Heroku is free to use for the standard machine. If you need a Heroku account, as
 
 ---
 
-![iPhoneScreenshot](assets/iOSScreenshot.png)
+![BoardingScreenshot](assets/BoardingScreenshot.png)
 
 ## Security
 
