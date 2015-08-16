@@ -1,0 +1,52 @@
+<div class="container" style="text-align: center; max-width: 350px; padding-top: 20px;">
+  <% if @metadata[:icon_url] %>
+    <%= image_tag @metadata[:icon_url], class: "appIcon", style: "margin-bottom: 30px;" %>
+  <% else %>
+    <div style="margin-bottom: 20px"></div>
+  <% end %>
+
+
+
+  <% unless @message %>
+    <h4 class="" style="margin-bottom: 40px;"><%= @metadata[:title] %></h4>
+
+    <%= form_tag("/submit", method: "post", style: "text-align: left") do %>
+      <%= label_tag(:first_name, "First Name:") %>
+      <%= text_field_tag :first_name, '', class: "form-control", placeholder: "First Name" %><br />
+      <%= label_tag(:last_name, "Last Name:") %>
+      <%= text_field_tag :last_name, '', class: "form-control", placeholder: "Last Name" %><br />
+      <%= label_tag(:email, "Email Address:") %>
+      <%= email_field_tag :email, '', class: "form-control", placeholder: "Email Address" %><br />
+      
+      <% if ENV["ITC_TOKEN"] %>
+        <% if params[:token] %>
+          <%= hidden_field_tag :token, '', value: params[:token] %>
+        <% else %>
+          <%= label_tag(:token, "Password:") %>
+          <%= text_field_tag :token, '', class: "form-control", placeholder: "Password" %><br />
+        <% end %>
+      <% end %>
+
+      <br />
+      <%= submit_tag "Get Beta Access", class: 'btn btn-lg btn-primary btn-block', id: "submit" %>
+    <% end %>
+  <% else %>
+    <p class="alert alert-<%= @type %>">
+      <%= @message %>
+    </p>
+  <% end %>
+</div>
+
+<style type="text/css">
+  .appIcon {
+    -webkit-border-radius: 22.544%;
+       -moz-border-radius: 22.544%;
+        -ms-border-radius: 22.544%;
+            border-radius: 22.544%;
+
+    width: 256px;
+  }
+  #submit {
+    margin-bottom: 20px;
+  }
+</style>
