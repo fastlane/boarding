@@ -111,7 +111,7 @@ With Heroku you can easily use your own domain, follow [this guide](https://devc
 
 `boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer. 
 
-Using [spaceship.airforce](https://spacehip.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
+Using [spaceship.airforce](https://spaceship.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
 
 This repository is a simple Rails application with most code in these files:
 
