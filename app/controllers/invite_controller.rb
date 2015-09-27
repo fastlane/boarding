@@ -146,7 +146,7 @@ class InviteController < ApplicationController
     # @return [Boolean] Is at least one TestFlight beta testing build available?
     def testing_is_live?
       app.build_trains.each do |version, train|
-        if train.testing_enabled
+        if train.external_testing_enabled
           train.builds.each do |build|
             return true if build.external_testing_enabled
           end
