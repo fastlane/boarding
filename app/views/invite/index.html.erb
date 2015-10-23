@@ -15,9 +15,9 @@
       <%= text_field_tag :first_name, '', class: "form-control", placeholder: "First Name" %><br />
       <%= label_tag(:last_name, "Last Name:") %>
       <%= text_field_tag :last_name, '', class: "form-control", placeholder: "Last Name" %><br />
-      <%= label_tag(:email, "Email Address:") %>
+      <%= label_tag(:email, "Email Address:", class: "required") %>
       <%= email_field_tag :email, '', class: "form-control", placeholder: "Email Address" %><br />
-      
+
       <% if ENV["ITC_TOKEN"] %>
         <% if params[:token] %>
           <%= hidden_field_tag :token, '', value: params[:token] %>
