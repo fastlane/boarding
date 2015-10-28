@@ -1,18 +1,18 @@
 <h3 align="center">
-  <a href="https://github.com/KrauseFx/fastlane">
+  <a href="https://github.com/fastlane/fastlane">
     <img src="app/assets/images/fastlane.png" width="100" />
     <br />
     fastlane
   </a>
 </h3>
 <p align="center">
-  <a href="https://github.com/KrauseFx/deliver">deliver</a> &bull; 
-  <a href="https://github.com/KrauseFx/snapshot">snapshot</a> &bull; 
-  <a href="https://github.com/KrauseFx/frameit">frameit</a> &bull; 
-  <a href="https://github.com/KrauseFx/PEM">PEM</a> &bull; 
-  <a href="https://github.com/KrauseFx/sigh">sigh</a> &bull; 
-  <a href="https://github.com/KrauseFx/produce">produce</a> &bull;
-  <a href="https://github.com/KrauseFx/cert">cert</a> &bull;
+  <a href="https://github.com/fastlane/deliver">deliver</a> &bull; 
+  <a href="https://github.com/fastlane/snapshot">snapshot</a> &bull; 
+  <a href="https://github.com/fastlane/frameit">frameit</a> &bull; 
+  <a href="https://github.com/fastlane/PEM">PEM</a> &bull; 
+  <a href="https://github.com/fastlane/sigh">sigh</a> &bull; 
+  <a href="https://github.com/fastlane/produce">produce</a> &bull;
+  <a href="https://github.com/fastlane/cert">cert</a> &bull;
   <a href="https://github.com/fastlane/spaceship">spaceship</a> &bull;
   <a href="https://github.com/fastlane/pilot">pilot</a> &bull;
   <b>boarding</b> &bull;
@@ -27,7 +27,7 @@
 -------
 
 [![Twitter: @KauseFx](https://img.shields.io/badge/contact-@KrauseFx-blue.svg?style=flat)](https://twitter.com/KrauseFx)
-[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/boarding/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/boarding/blob/master/LICENSE)
 
 
 Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/KrauseFx/)
@@ -68,9 +68,9 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 
 # Getting Started
 
-Assuming you already have a [Heroku](https://heroku.com) account follow those steps:
+Assuming you already have a [Heroku](https://www.heroku.com/) account follow those steps:
 
-- [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
+- [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy?template=https://github.com/fastlane/boarding)
 - Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
 - Click on `View` once the setup is complete and start sharing the URL
 
@@ -150,8 +150,8 @@ From time to time there will be updates to `boarding`. There are 2 ways to updat
 
 ### Using Heroku website
 
-- Delete your application on [heroku.com](https://heroku.com)
-- [Create a new boarding application](https://heroku.com/deploy?template=https://github.com/fastlane/boarding)
+- Delete your application on [heroku.com](https://www.heroku.com/)
+- [Create a new boarding application](https://www.heroku.com/deploy?template=https://github.com/fastlane/boarding)
 - Enter your user credentials again
 
 ##### [Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
