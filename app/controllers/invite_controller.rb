@@ -22,7 +22,7 @@ class InviteController < ApplicationController
 
     if ENV["ITC_TOKEN"]
       if ENV["ITC_TOKEN"] != params[:token]
-        @message = "Invalid password given, please contact the application owner"
+        @message = t(:message_invalid_password)
         @type = "danger"
         render :index
         return
@@ -35,7 +35,7 @@ class InviteController < ApplicationController
     end
 
     if ENV["ITC_IS_DEMO"]
-      @message = "This is a demo page. Here would be the success message with information about the TestFlight email"
+      @message = t(:message_demo_page)
       @type = "success"
       render :index
       return
@@ -63,20 +63,20 @@ class InviteController < ApplicationController
       end
 
       if testing_is_live?
-        @message = "Successfully added you as tester. Check your email inbox for an invite"
+        @message = t(:message_success_live)
       else
-        @message = "Successfully added you as tester. You'll be notified once the next build is available"
+        @message = t(:message_success_pending)
       end
       @type = "success"
     rescue => ex
       if ex.inspect.to_s.include?"EmailExists"
-        @message = "Email address is already registered"
+        @message = t(:message_email_exists)
         @type = "danger"
       else
         Rails.logger.fatal ex.inspect
         Rails.logger.fatal ex.backtrace.join("\n")
 
-        @message = "Something went wrong, please contact the application owner"
+        @message = t(:message_error)
         @type = "danger"
       end
     end
