@@ -72,6 +72,7 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     highline (1.7.7)
+    http_accept_language (2.0.5)
     i18n (0.7.0)
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
@@ -161,6 +162,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.5)
   byebug
   coffee-rails (~> 4.1.0)
+  http_accept_language (~> 2.0.5)
   jquery-rails
   rails (= 4.2.1)
   sass-rails (~> 5.0)

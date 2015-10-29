@@ -20,6 +20,8 @@ gem 'spaceship', '>= 0.9.0'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
+gem 'http_accept_language', '~> 2.0.5'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
