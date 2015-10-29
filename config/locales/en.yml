@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  first_name_label: "First Name:"
+  first_name_placeholder: "First Name"
+  last_name_label: "Last Name:"
+  last_name_placeholder: "Last Name"
+  email_label: "Email Address:"
+  email_placeholder: "Email Address"
+  password_label: "Password:"
+  password_placeholder: "Password"
+  get_beta_access: "Get Beta Access"
