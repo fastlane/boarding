@@ -20,4 +20,18 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  first_name_label: "First Name:"
+  first_name_placeholder: "First Name"
+  last_name_label: "Last Name:"
+  last_name_placeholder: "Last Name"
+  email_label: "Email Address:"
+  email_placeholder: "Email Address"
+  password_label: "Password:"
+  password_placeholder: "Password"
+  get_beta_access: "Get Beta Access"
+  message_invalid_password: "Invalid password given, please contact the application owner"
+  message_demo_page: "This is a demo page. Here would be the success message with information about the TestFlight email"
+  message_success_live: "Successfully added you as tester. Check your email inbox for an invite"
+  message_success_pending: "Successfully added you as tester. You'll be notified once the next build is available"
+  message_email_exists: "Email address is already registered"
+  message_error: "Something went wrong, please contact the application owner"
