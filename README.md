@@ -127,7 +127,7 @@ More information about this automation process on [my blog](https://krausefx.com
 If you want to change the design, layout or even add new features:
 
 - Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
-- Clone your application using `heroku clone --app [heroku_app_name]`
+- Clone your application using `heroku git:clone --app [heroku_app_name]`
 - `cd [heroku_app_name]`
 - Modify the content, in particular the files that are described above.
 - Test it locally by running `ITC_USER="email" ITC_... rails s` and opening [http://127.0.0.1:3000](http://127.0.0.1:3000)
