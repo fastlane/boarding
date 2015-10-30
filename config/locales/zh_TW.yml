@@ -1,0 +1,37 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  first_name_label: "姓："
+  first_name_placeholder: "姓"
+  last_name_label: "名："
+  last_name_placeholder: "名"
+  email_label: "Email 地址："
+  email_placeholder: "Email 地址"
+  password_label: "密碼："
+  password_placeholder: "密碼"
+  get_beta_access: "取得測試邀請"
+  message_invalid_password: "錯誤的密碼，請聯繫程式作者"
+  message_demo_page: "這是一個測試頁面，這邊將會有成功訊息與關於 TestFlight 邀請信的相關資訊。"
+  message_success_live: "已經成功將你加為測試者，請確認信箱中的邀請函。"
+  message_success_pending: "已經成功將你加為測試者，你將在下次新版釋出時收到通知。"
+  message_email_exists: "Email 已經被註冊"
+  message_error: "發生了錯誤，請聯繫程式作者"
