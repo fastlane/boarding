@@ -1,6 +1,6 @@
 {
   "name": "TestFlight boarding",
-  "description": "The easiest way to invite your TestFlight beta testers. The App Name is the name of the Heroku applicaiton, not the name of your app.",
+  "description": "The easiest way to invite your TestFlight beta testers. The App Name is the name of the Heroku application, not the name of your app.",
   "repository": "https://github.com/fastlane/boarding",
   "logo": "https://github.com/fastlane/boarding/raw/master/assets/BoardingIcon.png",
   "keywords": ["Testflight", "Spaceship", "fastlane", "invite"],
