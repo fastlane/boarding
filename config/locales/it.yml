@@ -1,0 +1,37 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+it:
+  first_name_label: "Nome:"
+  first_name_placeholder: "Nome"
+  last_name_label: "Cognome:"
+  last_name_placeholder: "Cognome"
+  email_label: "Indirizzo email:"
+  email_placeholder: "Indirizzo email"
+  password_label: "Password:"
+  password_placeholder: "Password"
+  get_beta_access: "Ottieni l'accesso beta"
+  message_invalid_password: "Password invalida, per favore contatta il proprietario dell'applicazione"
+  message_demo_page: "Questa è una pagina di esempio. Qui ci sarebbe il messaggio di conferma con le informazioni riguardo l'email di TestFlight"
+  message_success_live: "Sei stato aggiunto come tester. Controlla la tua mail per l'invito"
+  message_success_pending: "Sei stato aggiunto come tester. Sarai avvisato quando la prossima build sarà disponibile"
+  message_email_exists: "Indirizzo email già registrato"
+  message_error: "Qualcosa è andato storto, per favore contatta il proprietario dell'applicazione"
