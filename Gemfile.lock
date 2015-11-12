@@ -38,7 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.3)
-    autoprefixer-rails (6.0.3)
+    autoprefixer-rails (6.1.0.1)
       execjs
       json
     binding_of_caller (0.7.2)
@@ -47,7 +47,7 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
     builder (3.2.2)
-    byebug (6.0.2)
+    byebug (8.1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -55,7 +55,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1.1)
+    coffee-script-source (1.10.0)
     colored (1.2)
     credentials_manager (0.10.0)
       colored
@@ -134,7 +134,7 @@ GEM
       tilt (>= 1.1, < 3)
     security (0.1.3)
     slop (3.6.0)
-    spaceship (0.13.0)
+    spaceship (0.14.0)
       colored
       credentials_manager (>= 0.9.0)
       faraday (~> 0.9)
@@ -143,7 +143,7 @@ GEM
       multi_xml (~> 0.5)
       plist (~> 3.1)
       pry
-    spring (1.4.0)
+    spring (1.4.1)
     sprockets (3.4.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -175,7 +175,7 @@ DEPENDENCIES
   jquery-rails
   rails (= 4.2.1)
   sass-rails (~> 5.0)
-  spaceship (>= 0.9.0)
+  spaceship (>= 0.14.0)
   spring
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
