@@ -143,7 +143,7 @@ From time to time there will be updates to `boarding`. There are 2 ways to updat
 ### Recommended: Using the terminal
 
 - Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
-- Clone your application using `heroku clone --app [heroku_app_name]`
+- Clone your application using `heroku git:clone --app [heroku_app_name]`
 - `cd [heroku_app_name]`
 - `git pull https://github.com/fastlane/boarding`
 - `git push`
