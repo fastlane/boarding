@@ -20,6 +20,15 @@ class InviteController < ApplicationController
     first_name = params[:first_name]
     last_name = params[:last_name]
 
+    if ENV["RESTRICTED_DOMAIN"]
+      if email.split("@").last != ENV["RESTRICTED_DOMAIN"]
+        @message = "Sorry! Early access is currently restricted to people within the #{ENV["RESTRICTED_DOMAIN"]} domain."
+        @type = "warning"
+        render :index
+        return
+      end
+    end
+
     if ENV["ITC_TOKEN"]
       if ENV["ITC_TOKEN"] != params[:token]
         @message = t(:message_invalid_password)
@@ -50,8 +59,8 @@ class InviteController < ApplicationController
       tester ||= Spaceship::Tunes::Tester::External.find(config[:email])
       Helper.log.info "Existing tester #{tester.email}".green if tester
 
-      tester ||= Spaceship::Tunes::Tester::External.create!(email: email, 
-                                                            first_name: first_name, 
+      tester ||= Spaceship::Tunes::Tester::External.create!(email: email,
+                                                            first_name: first_name,
                                                             last_name: last_name)
 
       logger.info "Successfully created tester #{tester.email}"
@@ -95,7 +104,7 @@ class InviteController < ApplicationController
 
     def apple_id
       Rails.logger.error "No app to add this tester to provided, use the `ITC_APP_ID` environment variable" unless ENV["ITC_APP_ID"]
-      
+
       Rails.cache.fetch('AppID', expires_in: 10.minutes) do
         if ENV["ITC_APP_ID"].include?"." # app identifier
           login
