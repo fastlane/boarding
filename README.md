@@ -6,11 +6,11 @@
   </a>
 </h3>
 <p align="center">
-  <a href="https://github.com/fastlane/deliver">deliver</a> &bull; 
-  <a href="https://github.com/fastlane/snapshot">snapshot</a> &bull; 
-  <a href="https://github.com/fastlane/frameit">frameit</a> &bull; 
-  <a href="https://github.com/fastlane/PEM">PEM</a> &bull; 
-  <a href="https://github.com/fastlane/sigh">sigh</a> &bull; 
+  <a href="https://github.com/fastlane/deliver">deliver</a> &bull;
+  <a href="https://github.com/fastlane/snapshot">snapshot</a> &bull;
+  <a href="https://github.com/fastlane/frameit">frameit</a> &bull;
+  <a href="https://github.com/fastlane/PEM">PEM</a> &bull;
+  <a href="https://github.com/fastlane/sigh">sigh</a> &bull;
   <a href="https://github.com/fastlane/produce">produce</a> &bull;
   <a href="https://github.com/fastlane/cert">cert</a> &bull;
   <a href="https://github.com/fastlane/spaceship">spaceship</a> &bull;
@@ -76,7 +76,7 @@ Assuming you already have a [Heroku](https://www.heroku.com/) account follow tho
 
 `boarding` does all kinds of magic for you, like fetching the app name and app icon.
 
-Heroku is free to use for the standard machine. If you need a Heroku account, ask your back-end team if you already have a company account. 
+Heroku is free to use for the standard machine. If you need a Heroku account, ask your back-end team if you already have a company account.
 
 ---
 
@@ -86,7 +86,7 @@ Heroku is free to use for the standard machine. If you need a Heroku account, as
 
 ## Security
 
-To secure your webpage, you only have to set the `ITC_TOKEN` environment variable to any password. 
+To secure your webpage, you only have to set the `ITC_TOKEN` environment variable to any password.
 
 - You can send your users the link and tell them the password
 - You can send them the direct link including the token like this: https://url.com/?token=[password]
@@ -102,6 +102,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 **Optional:**
 - `ITC_TOKEN` Set a password to protect your website from random people signing up
 - `ITC_CLOSED_TEXT` Set this text to temporary disable enrollment of new beta testers
+- `RESTRICTED_DOMAIN` Set this domain (in the format `domain.com`) to restrict users with emails in another domain from signing up
 
 ## Custom Domain
 
@@ -109,7 +110,7 @@ With Heroku you can easily use your own domain, follow [this guide](https://devc
 
 # How does this work?
 
-`boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer. 
+`boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer.
 
 Using [spaceship.airforce](https://spaceship.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
 
