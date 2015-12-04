@@ -18,6 +18,10 @@
       "description": "The App ID or App Identifier of your app from iTunes Connect, to which the tester will be invited.",
       "required": true
     },
+    "FASTLANE_ITC_TEAM_NAME": {
+      "description": "Optional: If you're in multiple teams, enter the name of your iTC team here. Make sure it matches.",
+      "required": false
+    },
     "ITC_TOKEN": {
       "description": "Optional: Set a password to protect your website from random people signing up.",
       "required": false

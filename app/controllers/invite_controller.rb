@@ -138,6 +138,7 @@ class InviteController < ApplicationController
     def login
       return if @spaceship
       @spaceship = Spaceship::Tunes.login(user, password)
+      @spaceship.select_team
     end
 
     def set_app_details
