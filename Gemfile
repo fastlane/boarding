@@ -22,6 +22,10 @@ gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'http_accept_language', '~> 2.0.5'
 
+group :production do
+  gem 'puma'
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
