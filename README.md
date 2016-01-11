@@ -26,11 +26,11 @@
 </p>
 -------
 
-[![Twitter: @KauseFx](https://img.shields.io/badge/contact-@KrauseFx-blue.svg?style=flat)](https://twitter.com/KrauseFx)
+[![Twitter: @FastlaneTools](https://img.shields.io/badge/contact-@FastlaneTools-blue.svg?style=flat)](https://twitter.com/FastlaneTools)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/fastlane/boarding/blob/master/LICENSE)
 
 
-Get in contact with the developer on Twitter: [@KrauseFx](https://twitter.com/KrauseFx/)
+Get in contact with the developers on Twitter: [@FastlaneTools](https://twitter.com/FastlaneTools/)
 
 
 -------
