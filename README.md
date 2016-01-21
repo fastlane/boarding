@@ -162,6 +162,9 @@ From time to time there will be updates to `boarding`. There are 2 ways to updat
 
 Special thanks to [@lee_moonan](https://twitter.com/lee_moonan) for designing the awesome logo.
 
+# Code of Conduct
+Help us keep `boarding` open and inclusive. Please read and follow our [Code of Conduct](https://github.com/fastlane/code-of-conduct).
+
 # License
 This project is licensed under the terms of the MIT license. See the LICENSE file.
 
