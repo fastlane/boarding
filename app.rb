@@ -9,11 +9,6 @@ class Boarding < Sinatra::Base
 
   configure :production, :development do
     enable :logging
-    enable :sessions
-
-    file = File.new(File.join(settings.root, 'log', "#{settings.environment}.log"), 'a+')
-    file.sync = true
-    use Rack::CommonLogger, file
 
     I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
     I18n.load_path = Dir[File.join(settings.root, 'config', 'locales', '*.yml')]
