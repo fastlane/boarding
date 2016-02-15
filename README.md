@@ -1,6 +1,6 @@
 <h3 align="center">
   <a href="https://github.com/fastlane/fastlane">
-    <img src="app/assets/images/fastlane.png" width="100" />
+    <img src="assets/fastlane.png" width="100" />
     <br />
     fastlane
   </a>
@@ -115,10 +115,10 @@ With Heroku you can easily use your own domain, follow [this guide](https://devc
 
 Using [spaceship.airforce](https://spaceship.airforce) it is possible to manage testers, builds, metadata, certificates and so much more.
 
-This repository is a simple Rails application with most code in these files:
+This repository is a simple Sinatra application with most code in these files:
 
-- [invite_controller.rb](https://github.com/fastlane/boarding/blob/master/app/controllers/invite_controller.rb)
-- [invite/index.html.erb](https://github.com/fastlane/boarding/blob/master/app/views/invite/index.html.erb)
+- [app.rb](https://github.com/fastlane/boarding/blob/master/app.rb)
+- [index.erb](https://github.com/fastlane/boarding/blob/master/views/index.html.erb)
 
 ![BoardingOverview](assets/BoardingOverview.png)
 
@@ -132,7 +132,7 @@ If you want to change the design, layout or even add new features:
 - Clone your application using `heroku git:clone --app [heroku_app_name]`
 - `cd [heroku_app_name]`
 - Modify the content, in particular the files that are described above.
-- Test it locally by running `ITC_USER="email" ITC_... rails s` and opening [http://127.0.0.1:3000](http://127.0.0.1:3000)
+- Test it locally by running `ITC_USER="email" ITC_... rackup` and opening [http://127.0.0.1:3000](http://127.0.0.1:3000)
 - Commit the changes
 - `git push`
 

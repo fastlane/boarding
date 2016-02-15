@@ -14,36 +14,36 @@
 
 <div class="container" style="text-align: center; max-width: 350px; padding-top: 20px;">
   <% if @metadata[:icon_url] %>
-    <%= image_tag @metadata[:icon_url], class: "appIcon", style: "margin-bottom: 30px;" %>
+    <img src="<%= @metadata[:icon_url] %>" class="appIcon" style="margin-bottom: 30px;">
   <% else %>
     <div style="margin-bottom: 20px"></div>
   <% end %>
 
-
-
   <% unless @message %>
     <h4 class="" style="margin-bottom: 40px;"><%= @metadata[:title] %></h4>
 
-    <%= form_tag("/submit", method: "post", style: "text-align: left") do %>
-      <%= label_tag(:first_name, t(:first_name_label)) %>
-      <%= text_field_tag :first_name, '', class: "form-control", placeholder: t(:first_name_placeholder) %><br />
-      <%= label_tag(:last_name, t(:last_name_label)) %>
-      <%= text_field_tag :last_name, '', class: "form-control", placeholder: t(:last_name_placeholder) %><br />
-      <%= label_tag(:email, t(:email_label), class: "required") %>
-      <%= email_field_tag :email, '', class: "form-control", placeholder: t(:email_placeholder) %><br />
+    <form action="/submit" method="post" accept-charset="utf-8">
+      <label for="first_name"><%= t(:first_name_label) %></label>
+      <input type="text" name="first_name" id="first_name" value="" class="form-control" placeholder="<%= t(:first_name_placeholder) %>"><br>
+
+      <label for="last_name"><%= t(:last_name_label) %></label>
+      <input type="text" name="last_name" id="last_name" value="" class="form-control" placeholder="<%= t(:last_name_placeholder) %>"><br>
+
+      <label class="required" for="email"><%= t(:email_label) %></label>
+      <input type="email" name="email" id="email" value="" class="form-control" placeholder="<%= t(:email_placeholder) %>"><br>
 
       <% if ENV["ITC_TOKEN"] %>
         <% if params[:token] %>
-          <%= hidden_field_tag :token, '', value: params[:token] %>
+          <input type="hidden" name="token" value="<%= params[:token] %>" id="token">
         <% else %>
-          <%= label_tag(:token, t(:password_label)) %>
-          <%= text_field_tag :token, '', class: "form-control", placeholder: t(:password_placeholder) %><br />
+          <label for="token"><%= t(:password_label) %></label>
+          <input type="text" name="token" id="token" value="" class="form-control" placeholder="<%= t(:password_placeholder) %>"><br>
         <% end %>
       <% end %>
 
-      <br />
-      <%= submit_tag t(:get_beta_access), class: 'btn btn-lg btn-primary btn-block', id: "submit" %>
-    <% end %>
+      <br>
+      <input type="submit" name="commit" value="<%= t(:get_beta_access) %>" class="btn btn-lg btn-primary btn-block" id="submit">
+    </form>
   <% else %>
     <p class="alert alert-<%= @type %>">
       <%= @message %>
@@ -52,6 +52,9 @@
 </div>
 
 <style type="text/css">
+  form {
+    text-align: left;
+  }
   .appIcon {
     -webkit-border-radius: 22.544%;
        -moz-border-radius: 22.544%;
