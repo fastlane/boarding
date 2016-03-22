@@ -1,66 +1,28 @@
-<% if ENV["GA_PROPERTY_ID"] %>
-  <!-- Google Analytics -->
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<% unless @message %>
+  <h4 class="" style="margin-bottom: 40px;"><%= @metadata[:title] %></h4>
 
-  ga('create', '<%= ENV["GA_PROPERTY_ID"] %>', 'auto');
-  ga('send', 'pageview');
-  </script>
-  <!-- End Google Analytics -->
-<% end %>
+  <%= form_tag("/submit", method: "post", style: "text-align: left") do %>
+    <%= label_tag(:first_name, t(:first_name_label)) %>
+    <%= text_field_tag :first_name, '', class: "form-control", placeholder: t(:first_name_placeholder) %><br />
+    <%= label_tag(:last_name, t(:last_name_label)) %>
+    <%= text_field_tag :last_name, '', class: "form-control", placeholder: t(:last_name_placeholder) %><br />
+    <%= label_tag(:email, t(:email_label), class: "required") %>
+    <%= email_field_tag :email, '', class: "form-control", placeholder: t(:email_placeholder) %><br />
 
-<div class="container" style="text-align: center; max-width: 350px; padding-top: 20px;">
-  <% if @metadata[:icon_url] %>
-    <%= image_tag @metadata[:icon_url], class: "appIcon", style: "margin-bottom: 30px;" %>
-  <% else %>
-    <div style="margin-bottom: 20px"></div>
-  <% end %>
-
-
-
-  <% unless @message %>
-    <h4 class="" style="margin-bottom: 40px;"><%= @metadata[:title] %></h4>
-
-    <%= form_tag("/submit", method: "post", style: "text-align: left") do %>
-      <%= label_tag(:first_name, t(:first_name_label)) %>
-      <%= text_field_tag :first_name, '', class: "form-control", placeholder: t(:first_name_placeholder) %><br />
-      <%= label_tag(:last_name, t(:last_name_label)) %>
-      <%= text_field_tag :last_name, '', class: "form-control", placeholder: t(:last_name_placeholder) %><br />
-      <%= label_tag(:email, t(:email_label), class: "required") %>
-      <%= email_field_tag :email, '', class: "form-control", placeholder: t(:email_placeholder) %><br />
-
-      <% if ENV["ITC_TOKEN"] %>
-        <% if params[:token] %>
-          <%= hidden_field_tag :token, '', value: params[:token] %>
-        <% else %>
-          <%= label_tag(:token, t(:password_label)) %>
-          <%= text_field_tag :token, '', class: "form-control", placeholder: t(:password_placeholder) %><br />
-        <% end %>
+    <% if ENV["ITC_TOKEN"] %>
+      <% if params[:token] %>
+        <%= hidden_field_tag :token, '', value: params[:token] %>
+      <% else %>
+        <%= label_tag(:token, t(:password_label)) %>
+        <%= text_field_tag :token, '', class: "form-control", placeholder: t(:password_placeholder) %><br />
       <% end %>
-
-      <br />
-      <%= submit_tag t(:get_beta_access), class: 'btn btn-lg btn-primary btn-block', id: "submit" %>
     <% end %>
-  <% else %>
-    <p class="alert alert-<%= @type %>">
-      <%= @message %>
-    </p>
+
+    <br />
+    <%= submit_tag t(:get_beta_access), class: 'btn btn-lg btn-primary btn-block', id: "submit" %>
   <% end %>
-</div>
-
-<style type="text/css">
-  .appIcon {
-    -webkit-border-radius: 22.544%;
-       -moz-border-radius: 22.544%;
-        -ms-border-radius: 22.544%;
-            border-radius: 22.544%;
-
-    width: 256px;
-  }
-  #submit {
-    margin-bottom: 20px;
-  }
-</style>
+<% else %>
+  <p class="alert alert-<%= @type %>">
+    <%= @message %>
+  </p>
+<% end %>
