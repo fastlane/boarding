@@ -14,3 +14,16 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.appIcon {
+  -webkit-border-radius: 22.544%;
+     -moz-border-radius: 22.544%;
+      -ms-border-radius: 22.544%;
+          border-radius: 22.544%;
+  width: 256px;
+}
+
+#submit {
+  margin-bottom: 20px;
+}
+
