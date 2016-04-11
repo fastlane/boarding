@@ -57,7 +57,7 @@ class InviteController < ApplicationController
 
       tester = Spaceship::Tunes::Tester::Internal.find(config[:email])
       tester ||= Spaceship::Tunes::Tester::External.find(config[:email])
-      Helper.log.info "Existing tester #{tester.email}".green if tester
+      logger.info "Existing tester #{tester.email}".green if tester
 
       tester ||= Spaceship::Tunes::Tester::External.create!(email: email,
                                                             first_name: first_name,
