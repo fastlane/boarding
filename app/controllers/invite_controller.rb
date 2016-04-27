@@ -55,8 +55,8 @@ class InviteController < ApplicationController
     begin
       login
 
-      tester = Spaceship::Tunes::Tester::Internal.find(config[:email])
-      tester ||= Spaceship::Tunes::Tester::External.find(config[:email])
+      tester = Spaceship::Tunes::Tester::Internal.find(email)
+      tester ||= Spaceship::Tunes::Tester::External.find(email)
       logger.info "Existing tester #{tester.email}" if tester
 
       tester ||= Spaceship::Tunes::Tester::External.create!(email: email,
