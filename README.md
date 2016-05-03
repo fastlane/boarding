@@ -84,12 +84,22 @@ Heroku is free to use for the standard machine. If you need a Heroku account, as
 
 ---
 
+## Manage TestFlight external beta testers
+
+By accessing the link https://url.com/manage/external :
+- You can see the complete list of your TestFlight external users
+- You can delete a TestFlight user
+- You can resend the TestFlight mail invitation
+
 ## Security
 
 To secure your webpage, you only have to set the `ITC_TOKEN` environment variable to any password.
 
 - You can send your users the link and tell them the password
 - You can send them the direct link including the token like this: https://url.com/?token=[password]
+
+To secure the manage section, you only have to set the `HTTP_AUTH` environment variable to any username/password combinaison
+- HTTP_AUTH format: username:password
 
 ## Available environment variables
 
@@ -98,6 +108,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 - `ITC_USER` iTunes Connect username
 - `ITC_PASSWORD` iTunes Connect password
 - `ITC_APP_ID` The Apple ID or Bundle Identifier of your app
+- `HTTP_AUTH` The username and password to protect the 'manage' section from random access (format: username:password)
 
 **Optional:**
 - `ITC_TOKEN` Set a password to protect your website from random people signing up
@@ -119,6 +130,8 @@ This repository is a simple Rails application with most code in these files:
 
 - [invite_controller.rb](https://github.com/fastlane/boarding/blob/master/app/controllers/invite_controller.rb)
 - [invite/index.html.erb](https://github.com/fastlane/boarding/blob/master/app/views/invite/index.html.erb)
+- [manage_controller.rb](https://github.com/fastlane/boarding/blob/master/app/controllers/manage_controller.rb)
+- [manage/external.html.erb](https://github.com/fastlane/boarding/blob/master/app/views/manage/external.html.erb)
 
 ![BoardingOverview](assets/BoardingOverview.png)
 
