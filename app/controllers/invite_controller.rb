@@ -22,7 +22,7 @@ class InviteController < ApplicationController
 
     if ENV["RESTRICTED_DOMAIN"]
       domains = ENV["RESTRICTED_DOMAIN"].split(",")
-      if domains.include? email.split("@").last == false
+      unless domains.include?(email.split("@").last)
         if domains.count == 1
           @message = "Sorry! Early access is currently restricted to people within the #{domains.first} domain."
         else
