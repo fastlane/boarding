@@ -21,8 +21,13 @@ class InviteController < ApplicationController
     last_name = params[:last_name]
 
     if ENV["RESTRICTED_DOMAIN"]
-      if email.split("@").last != ENV["RESTRICTED_DOMAIN"]
-        @message = "Sorry! Early access is currently restricted to people within the #{ENV["RESTRICTED_DOMAIN"]} domain."
+      domains = ENV["RESTRICTED_DOMAIN"].split(",")
+      unless domains.include?(email.split("@").last)
+        if domains.count == 1
+          @message = "Sorry! Early access is currently restricted to people within the #{domains.first} domain."
+        else
+          @message = "Sorry! Early access is currently restricted to people within the following domains: (#{domains.join(", ")})"
+        end
         @type = "warning"
         render :index
         return
