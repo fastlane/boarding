@@ -71,7 +71,7 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 Assuming you already have a [Heroku](https://www.heroku.com/) account follow those steps:
 
 - [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy?template=https://github.com/fastlane/boarding)
-- Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
+- Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables. Note that 2-factor auth is *not* currently supported, and the app will not run.
 - Click on `View` once the setup is complete and start sharing the URL
 
 `boarding` does all kinds of magic for you, like fetching the app name and app icon.
@@ -95,7 +95,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 
 **Required:**
 
-- `ITC_USER` iTunes Connect username
+- `ITC_USER` iTunes Connect username. Must not have 2-factor auth enabled.
 - `ITC_PASSWORD` iTunes Connect password
 - `ITC_APP_ID` The Apple ID or Bundle Identifier of your app
 
