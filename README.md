@@ -122,7 +122,7 @@ This repository is a simple Rails application with most code in these files:
 
 ![BoardingOverview](assets/BoardingOverview.png)
 
-More information about this automation process on [my blog](https://krausefx.com).
+More information about this automation process can be found [here](https://krausefx.com/blog/letting-computers-do-the-hard-work).
 
 # Customize
 
