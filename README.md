@@ -1,6 +1,6 @@
 <h3 align="center">
   <a href="https://github.com/fastlane/fastlane">
-    <img src="app/assets/images/fastlane.png" width="100" />
+    <img src="https://raw.githubusercontent.com/fastlane/boarding/master/app/assets/images/fastlane.png" width="100" />
     <br />
     fastlane
   </a>
@@ -22,7 +22,7 @@
 -------
 
 <p align="center">
-  <img src="assets/BoardingHuge.png" width="650">
+  <img src="https://raw.githubusercontent.com/fastlane/boarding/master/assets/BoardingHuge.png" width="650">
 </p>
 -------
 
@@ -56,7 +56,7 @@ Because that's what you do right now as an app developer when you want to add a 
 
 Why don't you have a simple web site you can share with potential testers (e.g. email newsletter, Facebook, Twitter) on which people interested in trying out your new app can just `board` on their own?
 
-![BoardingScreenshot](assets/BoardingScreenshot.png)
+![BoardingScreenshot](https://raw.githubusercontent.com/fastlane/boarding/master/assets/BoardingScreenshot.png)
 
 Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really talk a lot about flying :rocket:) it is now possible to automate the boarding process for your TestFlight beta testers.
 
@@ -80,7 +80,7 @@ Heroku is free to use for the standard machine. If you need a Heroku account, as
 
 ---
 
-![SetupGif](assets/BoardingSetup.gif)
+![SetupGif](https://raw.githubusercontent.com/fastlane/boarding/master/assets/BoardingSetup.gif)
 
 ---
 
@@ -122,7 +122,7 @@ This repository is a simple Rails application with most code in these files:
 - [invite_controller.rb](https://github.com/fastlane/boarding/blob/master/app/controllers/invite_controller.rb)
 - [invite/index.html.erb](https://github.com/fastlane/boarding/blob/master/app/views/invite/index.html.erb)
 
-![BoardingOverview](assets/BoardingOverview.png)
+![BoardingOverview](https://raw.githubusercontent.com/fastlane/boarding/master/assets/BoardingOverview.png)
 
 More information about this automation process can be found [here](https://krausefx.com/blog/letting-computers-do-the-hard-work).
 
