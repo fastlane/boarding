@@ -1,0 +1,124 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<% if ENV["GA_PROPERTY_ID"] %>
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '<%= ENV["GA_PROPERTY_ID"] %>', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+<% end %>
+
+<div class="container" style="text-align: center; max-width: 900px; padding-top: 20px;">   
+  <% if @metadata[:icon_url] %>
+    <%= image_tag @metadata[:icon_url], class: "appIcon", style: "margin-bottom: 30px;" %>
+  <% end %>  
+  <div class="header-container"> 
+    <div class="message_container">
+      <% if notice %>
+        <p id="notice" class="alert alert-success">
+            <%= notice %>
+        </p>
+      <% end %>
+
+      <% if alert %>
+        <p id="alert" class="alert alert-danger">
+            <%= alert %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <table class="testersTable">
+    <thead>
+      <tr>
+        <th class="col-email"><%= t(:email_label) %></th>  
+        <th class="col-name"><%= t(:full_name_header) %></th>  
+        <th class="col-last-install"><%= t(:last_install_date_header) %></th>
+        <th class="col-action"></th>
+      </tr>
+    </thead>
+
+    <% @testers.each do |tester| %>
+      <tr>
+        <td><%= tester.email %></td>        
+        <td><%= tester.first_name %> <b><%= tester.last_name %></b></td>          
+        <td><%= tester.latest_install_date %></td>
+        <td>
+          <%= link_to tester_path(tester), method: :delete, data: { confirm: t(:delete_confirmation, tester_email: tester.email) } do %>
+             <i class="material-icons md-36">delete_forever</i>
+          <% end %>
+
+          <%= link_to "renew/#{tester_path(tester)}", method: :post, data: { confirm: t(:renew_confirmation, tester_email: tester.email) } do %>
+             <i class="material-icons">autorenew</i>
+          <% end %>                    
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<style type="text/css">
+  .header-container {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .message_container {
+    margin: auto;
+    align-self: center;
+  }
+
+  .appIcon {
+    -webkit-border-radius: 22.544%;
+       -moz-border-radius: 22.544%;
+        -ms-border-radius: 22.544%;
+            border-radius: 22.544%;
+
+    width: 85px;    
+  }
+
+  .col-email {
+    width: 300px;
+  }
+
+  .col-name {
+    width: 220px;
+  }
+
+  .col-last-install {
+    width: 250px;
+  }
+
+  .col-action {
+    width: 100px;
+  }
+
+  .material-icons.md-36 { font-size: 36px; }
+
+  .testersTable {
+    font-size: 15px;
+    line-height: 19px;
+    color: #4c4c4c;
+    margin-bottom: 30px;
+  }
+
+  .testersTable th {
+    padding: 10px;
+    vertical-align: bottom;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f7f7f7;
+  }
+
+  .testersTable td {
+    text-align: left;
+    padding: 15px 1% 15px 12px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+</style>
