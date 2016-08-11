@@ -84,6 +84,8 @@ Heroku is free to use for the standard machine. If you need a Heroku account, as
 
 ---
 
+If your account is protected using 2-factor author, follow the [2 step verification guide](https://github.com/fastlane/fastlane/blob/master/spaceship/README.md#2-step-verification).
+
 ## Security
 
 To secure your webpage, you only have to set the `ITC_TOKEN` environment variable to any password.
