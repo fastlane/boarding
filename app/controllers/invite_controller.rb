@@ -60,6 +60,14 @@ class InviteController < ApplicationController
     begin
       login
 
+      tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id)
+
+      if tester
+        @message = t(:message_email_exists)
+        @type = "danger"
+        return
+      end
+
       # This works even if the tester already exists
       tester = Spaceship::Tunes::Tester::External.new({
         'emailAddress' => {'value' => email},
