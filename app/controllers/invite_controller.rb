@@ -8,6 +8,16 @@ class InviteController < ApplicationController
     else
       render 'environment_error'
     end
+  rescue => ex
+    update_spaceship_message
+    raise ex
+  end
+
+  def update_spaceship_message
+    Rails.logger.fatal("--------------------------------------------------------------------------------")
+    Rails.logger.fatal("Error rendering the page, make sure to update to the latest version of spaceship")
+    Rails.logger.fatal("More information about how to do so can be found on the project README")
+    Rails.logger.fatal("--------------------------------------------------------------------------------")
   end
 
   def submit
@@ -96,6 +106,9 @@ class InviteController < ApplicationController
     end
 
     render :index
+  rescue => ex
+    update_spaceship_message
+    raise ex
   end
 
   private
