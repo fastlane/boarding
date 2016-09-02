@@ -60,7 +60,7 @@ class InviteController < ApplicationController
     begin
       login
 
-      tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id)
+      tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id, email)
 
       if tester
         @message = t(:message_email_exists)
