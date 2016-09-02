@@ -62,18 +62,19 @@ class InviteController < ApplicationController
 
       tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id, email)
 
+      logger.info "Found tester #{tester}"
+
       if tester
         @message = t(:message_email_exists)
         @type = "danger"
         return
       end
 
-      # This works even if the tester already exists
       tester = Spaceship::Tunes::Tester::External.new({
         'emailAddress' => {'value' => email},
         'firstName' => {'value' => first_name},
         'lastName' => {'value' => last_name}
-        })
+      })
 
       logger.info "Successfully created tester #{tester.email}"
 
@@ -90,16 +91,11 @@ class InviteController < ApplicationController
       end
       @type = "success"
     rescue => ex
-      if ex.inspect.to_s.include?"EmailExists"
-        @message = t(:message_email_exists)
-        @type = "danger"
-      else
-        Rails.logger.fatal ex.inspect
-        Rails.logger.fatal ex.backtrace.join("\n")
+      Rails.logger.fatal ex.inspect
+      Rails.logger.fatal ex.backtrace.join("\n")
 
-        @message = t(:message_error)
-        @type = "danger"
-      end
+      @message = t(:message_error)
+      @type = "danger"
     end
 
     render :index
