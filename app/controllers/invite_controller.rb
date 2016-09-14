@@ -2,6 +2,8 @@ class InviteController < ApplicationController
   before_action :set_app_details
   before_action :check_disabled_text
 
+  skip_before_filter :verify_authenticity_token
+
   def index
     if user and password
       # default
