@@ -72,39 +72,42 @@ class InviteController < ApplicationController
     begin
       login
 
-      tester = Spaceship::Tunes::Tester::Internal.find(email)
-      tester ||= Spaceship::Tunes::Tester::External.find(email)
-      logger.info "Existing tester #{tester.email}" if tester
+      tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id, email)
 
-      tester ||= Spaceship::Tunes::Tester::External.create!(email: email,
-                                                            first_name: first_name,
-                                                            last_name: last_name)
+      logger.info "Found tester #{tester}"
 
-      logger.info "Successfully created tester #{tester.email}"
-
-      if apple_id.length > 0
-        logger.info "Addding tester to application"
-        tester.add_to_app!(apple_id)
-        logger.info "Done"
-      end
-
-      if testing_is_live?
-        @message = t(:message_success_live)
-      else
-        @message = t(:message_success_pending)
-      end
-      @type = "success"
-    rescue => ex
-      if ex.inspect.to_s.include?"EmailExists"
+      if tester
         @message = t(:message_email_exists)
         @type = "danger"
       else
-        Rails.logger.fatal ex.inspect
-        Rails.logger.fatal ex.backtrace.join("\n")
+        tester = Spaceship::Tunes::Tester::External.new({
+          'emailAddress' => {'value' => email},
+          'firstName' => {'value' => first_name},
+          'lastName' => {'value' => last_name}
+        })
 
-        @message = t(:message_error)
-        @type = "danger"
+        logger.info "Successfully created tester #{tester.email}"
+
+        if apple_id.length > 0
+          logger.info "Addding tester to application"
+          tester.add_to_app!(apple_id)
+          logger.info "Done"
+        end
+
+        if testing_is_live?
+          @message = t(:message_success_live)
+        else
+          @message = t(:message_success_pending)
+        end
+        @type = "success"
       end
+      
+    rescue => ex
+      Rails.logger.fatal ex.inspect
+      Rails.logger.fatal ex.backtrace.join("\n")
+
+      @message = t(:message_error)
+      @type = "danger"
     end
 
     render :index
