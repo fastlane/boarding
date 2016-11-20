@@ -130,9 +130,10 @@ More information about this automation process can be found [here](https://kraus
 
 If you want to change the design, layout or even add new features:
 
-- Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
+- Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login` (it will be an empty repo)
 - Clone your application using `heroku git:clone --app [heroku_app_name]`
 - `cd [heroku_app_name]`
+- `git pull https://github.com/fastlane/boarding`
 - Modify the content, in particular the files that are described above.
 - Test it locally by running `ITC_USER="email" ITC_... rails s` and opening [http://127.0.0.1:3000](http://127.0.0.1:3000)
 - Commit the changes
@@ -147,7 +148,7 @@ From time to time there will be updates to `boarding`. There are 2 ways to updat
 ### Recommended: Using the terminal
 
 - Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
-- Clone your application using `heroku git:clone --app [heroku_app_name]`
+- Clone your application using `heroku git:clone --app [heroku_app_name]` (it will be an empty repo)
 - `cd [heroku_app_name]`
 - `git pull https://github.com/fastlane/boarding`
 - `git push`
