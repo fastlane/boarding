@@ -72,6 +72,16 @@ class InviteController < ApplicationController
     begin
       login
 
+      if ENV['MAX_NUMBER_OF_TESTERS']
+          if ENV['MAX_NUMBER_OF_TESTERS'].to_i <= Spaceship::Tunes::Tester::External.all.count
+              @message = t(:message_max_testers)
+              @type = 'warning'
+              render :index
+              #ENV['ITC_CLOSED_TEXT'] = t(:message_max_testers)
+              return
+          end
+      end
+
       tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id, email)
 
       logger.info "Found tester #{tester}"
@@ -101,7 +111,7 @@ class InviteController < ApplicationController
         end
         @type = "success"
       end
-      
+
     rescue => ex
       Rails.logger.fatal ex.inspect
       Rails.logger.fatal ex.backtrace.join("\n")

@@ -31,6 +31,7 @@ zh-TW:
   get_beta_access: "取得測試邀請"
   message_invalid_password: "錯誤的密碼，請聯繫程式作者"
   message_demo_page: "這是一個測試頁面，這邊將會有成功訊息與關於 TestFlight 邀請信的相關資訊。"
+  message_max_testers: "Maximum number of testers has been reached, please check back later"
   message_success_live: "已經成功將你加為測試者，請確認信箱中的邀請函。"
   message_success_pending: "已經成功將你加為測試者，你將在下次新版釋出時收到通知。"
   message_email_exists: "Email 已經被註冊"

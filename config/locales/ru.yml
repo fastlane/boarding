@@ -30,6 +30,7 @@ ru:
   password_placeholder: "Пароль"
   get_beta_access: "Получить доступ к beta-версии."
   message_invalid_password: "Неверный пароль. Пожалуйста, свяжитесь с разработчиком приложения."
+  message_max_testers: "Maximum number of testers has been reached, please check back later"
   message_demo_page: "Это демо-страница. Здесь будет сообщение с информацией о письме от TestFlight."
   message_success_live: "Вы успешно добавлены в программу beta-тестирования. Вам на почту придет приглашение."
   message_success_pending: "Вы успешно добавлены в программу beta-тестирования. Вам придет уведомление, как только следующая beta-версия приложения станет доступна."

@@ -30,6 +30,7 @@ de:
   password_placeholder: "Passwort"
   get_beta_access: "Beta-Zugang anfordern"
   message_invalid_password: "Ungültiges Passwort, bitte kontaktieren Sie den Hersteller der Applikation"
+  message_max_testers: "Maximum number of testers has been reached, please check back later"
   message_demo_page: "Dies ist eine Demoseite. Hier würde die Bestätigung mit Informationen über die TestFlight E-Mail stehen"
   message_success_live: "Sie wurden erfolgreich als Tester hinzugefügt. Überprüfen Sie Ihren Posteingang für eine Einladung"
   message_success_pending: "Sie wurden erfolgreich als Tester hinzugefügt. Sie werden benachrichtigt sobald eine neue Version verfügbar ist"
