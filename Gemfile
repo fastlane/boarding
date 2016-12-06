@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 # Added by Felix
-gem 'spaceship', '>= 0.38.4'
+gem 'spaceship', '>= 0.38.5'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
