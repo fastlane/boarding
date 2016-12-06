@@ -20,10 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 zh-TW:
-  first_name_label: "姓："
-  first_name_placeholder: "姓"
-  last_name_label: "名："
-  last_name_placeholder: "名"
+  first_name_label: "名："
+  first_name_placeholder: "名"
+  last_name_label: "姓："
+  last_name_placeholder: "姓"
   email_label: "Email 地址："
   email_placeholder: "Email 地址"
   password_label: "密碼："
