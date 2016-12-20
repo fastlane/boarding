@@ -130,8 +130,8 @@ More information about this automation process can be found [here](https://kraus
 
 If you want to change the design, layout or even add new features:
 
-- Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login` (it will be an empty repo)
-- Clone your application using `heroku git:clone --app [heroku_app_name]`
+- Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
+- Clone your application using `heroku git:clone --app [heroku_app_name]` (it will be an empty repo)
 - `cd [heroku_app_name]`
 - `git pull https://github.com/fastlane/boarding`
 - Modify the content, in particular the files that are described above.
