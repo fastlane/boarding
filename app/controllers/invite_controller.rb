@@ -1,3 +1,4 @@
+require 'spaceship'
 class InviteController < ApplicationController
   before_action :set_app_details
   before_action :check_disabled_text
@@ -101,7 +102,7 @@ class InviteController < ApplicationController
         end
         @type = "success"
       end
-      
+
     rescue => ex
       Rails.logger.fatal ex.inspect
       Rails.logger.fatal ex.backtrace.join("\n")
