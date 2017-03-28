@@ -19,11 +19,13 @@
   <a href="https://github.com/fastlane/fastlane/tree/master/gym">gym</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/scan">scan</a>
 </p>
+
 -------
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/fastlane/boarding/master/assets/BoardingHuge.png" width="650">
 </p>
+
 -------
 
 [![Twitter: @FastlaneTools](https://img.shields.io/badge/contact-@FastlaneTools-blue.svg?style=flat)](https://twitter.com/FastlaneTools)
@@ -34,6 +36,7 @@ Get in contact with the developers on Twitter: [@FastlaneTools](https://twitter.
 
 
 -------
+
 <p align="center">
     <a href="#whats-boarding">Why?</a> &bull;
     <a href="#getting-started">Getting Started</a> &bull;
@@ -62,7 +65,7 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 
 ### Example
 
-#####Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
+##### Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
 
 [Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
 
