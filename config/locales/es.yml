@@ -30,6 +30,7 @@ es:
   password_placeholder: "Contraseña"
   get_beta_access: "Acceder a la beta"
   message_invalid_password: "Contraseña incorrecta, por favor contacta con el propietario de la aplicación"
+  message_max_testers: "Maximum number of testers has been reached, please check back later"
   message_demo_page: "Esto es una página de prueba.  Aquí tendrías el mensaje de éxito con la información sobre el correo electrónico de TestFlight"
   message_success_live: "Has sido añadido como tester. Revisa tu correo para ver la invitación"
   message_success_pending: "Has sido añadido como tester. Se te avisará una vez que la próxima versión esté disponible"

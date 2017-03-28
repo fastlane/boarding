@@ -30,6 +30,7 @@ da:
   password_placeholder: "Kodeord"
   get_beta_access: "Få Beta Adgang"
   message_invalid_password: "Forkert kodeord, kontakt venligst app ejeren"
+  message_max_testers: "Maximum number of testers has been reached, please check back later"
   message_demo_page: "Dette er en test side. Her kommer success beskeden med information om TestFlight e-mailen"
   message_success_live: "Du er blevet tilføjet som tester. Tjek din e-mail for invitationen"
   message_success_pending: "Du er blevet tilføjet som tester. Du får besked når næste version er tilgængelig"

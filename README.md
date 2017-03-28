@@ -109,6 +109,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 - `ITC_CLOSED_TEXT` Set this text to temporary disable enrollment of new beta testers
 - `RESTRICTED_DOMAIN` Set this domain (in the format `domain.com`) to restrict users with emails in another domain from signing up. This list supports multiple domains by setting it to a comma delimited list (`domain1.com,domain2.com`)
 - `FASTLANE_ITC_TEAM_NAME` If you're in multiple teams, enter the name of your iTC team here. Make sure it matches.
+- `MAX_NUMBER_OF_TESTERS` Set a limit on the number of tester that are allowed to sign up (`500`).
 
 ## Custom Domain
 
