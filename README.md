@@ -13,7 +13,7 @@
   <a href="https://github.com/fastlane/fastlane/tree/master/sigh">sigh</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/produce">produce</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/cert">cert</a> &bull;
-  <a href="https://github.com/fastlane/spaceship">spaceship</a> &bull;
+  <a href="https://github.com/fastlane/fastlane/tree/master/spaceship">spaceship</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/pilot">pilot</a> &bull;
   <b>boarding</b> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/gym">gym</a> &bull;
