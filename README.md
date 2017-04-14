@@ -49,6 +49,12 @@ Get in contact with the developers on Twitter: [@FastlaneTools](https://twitter.
 
 <h5 align="center"><code>boarding</code> is part of <a href="https://fastlane.tools">fastlane</a>: connect all deployment tools into one streamlined workflow.</h5>
 
+---
+
+**Important:** With the most recent update of TestFlight, both [pilot](https://fastlane.tools/pilot) and `boarding` need to be updated to make use of the new API. Please follow [#8887](https://github.com/fastlane/fastlane/pull/8887) to stay up to date. We're trying to get a fix out as soon as possible.
+
+---
+
 # What's boarding?
 
 Instantly create a simple signup page for TestFlight beta testers.
