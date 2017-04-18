@@ -73,6 +73,7 @@ class InviteController < ApplicationController
     begin
       login
 
+      app  = Spaceship::Application.find(apple_id)
       tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id, email)
 
       logger.info "Found tester #{tester}"
@@ -82,16 +83,16 @@ class InviteController < ApplicationController
         @type = "danger"
       else
         tester = Spaceship::Tunes::Tester::External.new({
-          'emailAddress' => {'value' => email},
-          'firstName' => {'value' => first_name},
-          'lastName' => {'value' => last_name}
+          'email' => email,
+          'firstName' => first_name,
+          'lastName' => last_name
         })
 
         logger.info "Successfully created tester #{tester.email}"
 
         if apple_id.length > 0
           logger.info "Addding tester to application"
-          tester.add_to_app!(apple_id)
+          app.default_external_group.add_tester!(tester)
           logger.info "Done"
         end
 

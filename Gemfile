@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 # ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -16,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 # Added by Felix
-gem 'fastlane'
+gem 'fastlane', :github => "hjanuschka/fastlane", :branch => "fix-itunes-client-hj"
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
