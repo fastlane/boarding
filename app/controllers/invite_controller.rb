@@ -83,7 +83,7 @@ class InviteController < ApplicationController
         @type = "danger"
       else
         tester = Spaceship::Tunes::Tester::External.new({
-          'emailAddress' => email,
+          'email' => email,
           'firstName' => first_name,
           'lastName' => last_name
         })
