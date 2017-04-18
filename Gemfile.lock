@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/hjanuschka/fastlane.git
-  revision: bdc71b17b3a1a567c40b361de3d300fc79cfb5ab
+  revision: 6c99313dcae29ac208d757fbbea635a92de2b1c3
   branch: fix-itunes-client-hj
   specs:
     fastlane (2.26.1)
