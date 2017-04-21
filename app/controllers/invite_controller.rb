@@ -82,11 +82,9 @@ class InviteController < ApplicationController
         @message = t(:message_email_exists)
         @type = "danger"
       else
-        tester = Spaceship::Tunes::Tester::External.new({
-          'email' => email,
-          'firstName' => first_name,
-          'lastName' => last_name
-        })
+        tester = Spaceship::Tunes::Tester::External.create!(email: email,
+                                                       first_name: first_name,
+                                                        last_name: last_name)
 
         logger.info "Successfully created tester #{tester.email}"
 
