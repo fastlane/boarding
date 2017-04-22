@@ -90,7 +90,7 @@ class InviteController < ApplicationController
 
         if apple_id.length > 0
           logger.info "Addding tester to application"
-          app.default_external_group.add_tester!(tester)
+          find_testers_group(app).add_tester!(tester)
           logger.info "Done"
         end
 
@@ -186,5 +186,22 @@ class InviteController < ApplicationController
         end
       end
       return false
+    end
+
+    def find_testers_group app
+      group_name = ENV["ITC_EXTERNAL_GROUP"]
+      if group_name.present?
+        group = Spaceship::TestFlight::Group.find(app_id: app.apple_id,
+                                              group_name: group_name)
+      else
+        group = app.default_external_group
+      end
+
+      return group if group
+
+      Rails.logger.fatal("----------------------------------------------------------------------------")
+      Rails.logger.fatal("No default external group for this iTunes app neither ITC_EXTERNAL_GROUP set")
+      Rails.logger.fatal("----------------------------------------------------------------------------")
+      raise "No default external group for this iTunes app neither ITC_EXTERNAL_GROUP set"
     end
 end
