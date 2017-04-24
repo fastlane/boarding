@@ -1,4 +1,5 @@
 require 'spaceship'
+require 'slack-notifier'
 class InviteController < ApplicationController
   before_action :set_app_details
   before_action :check_disabled_text
@@ -92,6 +93,7 @@ class InviteController < ApplicationController
           logger.info "Addding tester to application"
           app.default_external_group.add_tester!(tester)
           logger.info "Done"
+          notify_slack(first_name,last_name,email)
         end
 
         if testing_is_live?
@@ -187,4 +189,13 @@ class InviteController < ApplicationController
       end
       return false
     end
+
+    def notify_slack(first_name,last_name,email)
+      if ENV["SLACK_WEBHOOK_URL"]
+        notifier = Slack::Notifier.new ENV["SLACK_WEBHOOK_URL"], username: "Boarding Bot"
+
+        notifier.ping text: "Added new tester to TestFlight App #{app_metadata[:title]}: #{first_name} #{last_name}", icon_emoji: ":airplane:"
+      end
+    end
+
 end
