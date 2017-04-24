@@ -194,7 +194,7 @@ class InviteController < ApplicationController
       if ENV["SLACK_WEBHOOK_URL"]
         notifier = Slack::Notifier.new ENV["SLACK_WEBHOOK_URL"], username: "Boarding Bot"
 
-        notifier.ping text: "Added new tester to TestFlight App #{app_metadata[:title]}: #{email} - #{first_name} #{last_name}", icon_emoji: ":airplane:"
+        notifier.ping text: "Added new tester to TestFlight App #{app_metadata[:title]}: #{first_name} #{last_name}", icon_emoji: ":airplane:"
       end
     end
 
