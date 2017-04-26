@@ -96,7 +96,9 @@ class BoardingService
           end
           test_flight_groups = [default_external_group]
       else
-        test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: app.apple_id) do |group| groups.include?(group.name) end
+        test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: app.apple_id) do |group| 
+          groups.include?(group.name) 
+        end
 
         Rails.logger.error "There are no groups available matching the names passed to the `:groups` option." if test_flight_groups.empty?
       end
