@@ -6,7 +6,7 @@ class InviteController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    if user and password
+    if boarding_service.user and boarding_service.password
       # default
     else
       render 'environment_error'
@@ -29,10 +29,6 @@ class InviteController < ApplicationController
       return
     end
 
-    email = params[:email]
-    first_name = params[:first_name]
-    last_name = params[:last_name]
-
     if ENV["RESTRICTED_DOMAIN"]
       domains = ENV["RESTRICTED_DOMAIN"].split(",")
       unless domains.include?(email.split("@").last)
@@ -47,61 +43,35 @@ class InviteController < ApplicationController
       end
     end
 
-    if ENV["ITC_TOKEN"]
-      if ENV["ITC_TOKEN"] != params[:token]
+    if boarding_service.itc_token
+      if boarding_service.itc_token != params[:token]
         @message = t(:message_invalid_password)
         @type = "danger"
         render :index
         return
       end
     end
+    
+    email = params[:email]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
 
     if email.length == 0
       render :index
       return
     end
 
-    if ENV["ITC_IS_DEMO"]
+    if boarding_service.is_demo
       @message = t(:message_demo_page)
       @type = "success"
       render :index
       return
     end
 
-    logger.info "Going to create a new tester: #{email} - #{first_name} #{last_name}"
+    logger.info "Creating a new tester: #{email} - #{first_name} #{last_name}"
 
     begin
-      login
-
-      app  = Spaceship::Application.find(apple_id)
-      tester = Spaceship::Tunes::Tester::External.find_by_app(apple_id, email)
-
-      logger.info "Found tester #{tester}"
-
-      if tester
-        @message = t(:message_email_exists)
-        @type = "danger"
-      else
-        tester = Spaceship::Tunes::Tester::External.create!(email: email,
-                                                       first_name: first_name,
-                                                        last_name: last_name)
-
-        logger.info "Successfully created tester #{tester.email}"
-
-        if apple_id.length > 0
-          logger.info "Addding tester to application"
-          app.default_external_group.add_tester!(tester)
-          logger.info "Done"
-        end
-
-        if testing_is_live?
-          @message = t(:message_success_live)
-        else
-          @message = t(:message_success_pending)
-        end
-        @type = "success"
-      end
-
+      create_and_add_tester(email, first_name, last_name)
     rescue => ex
       Rails.logger.fatal ex.inspect
       Rails.logger.fatal ex.backtrace.join("\n")
@@ -117,51 +87,23 @@ class InviteController < ApplicationController
   end
 
   private
-    def user
-      ENV["ITC_USER"] || ENV["FASTLANE_USER"]
+    def create_and_add_tester(email, first_name, last_name)
+      add_tester_response = boarding_service.add_tester(email, first_name, last_name)
+      @message = add_tester_response.message
+      @type = add_tester_response.type
     end
 
-    def password
-      ENV["ITC_PASSWORD"] || ENV["FASTLANE_PASSWORD"]
-    end
-
-    def apple_id
-      Rails.logger.error "No app to add this tester to provided, use the `ITC_APP_ID` environment variable" unless ENV["ITC_APP_ID"]
-
-      Rails.cache.fetch('AppID', expires_in: 10.minutes) do
-        if ENV["ITC_APP_ID"].include?"." # app identifier
-          login
-          app = Spaceship::Application.find(ENV["ITC_APP_ID"])
-          app.apple_id
-        else
-          ENV["ITC_APP_ID"].to_s
-        end
-      end
-    end
-
-    def app
-      login
-
-      @app ||= Spaceship::Tunes::Application.find(ENV["ITC_APP_ID"])
-
-      raise "Could not find app with ID #{apple_id}" unless @app
-
-      @app
+    def boarding_service
+      BOARDING_SERVICE
     end
 
     def app_metadata
       Rails.cache.fetch('appMetadata', expires_in: 10.minutes) do
         {
-          icon_url: app.app_icon_preview_url,
-          title: app.name
+          icon_url: boarding_service.app.app_icon_preview_url,
+          title: boarding_service.app.name
         }
       end
-    end
-
-    def login
-      return if @spaceship
-      @spaceship = Spaceship::Tunes.login(user, password)
-      @spaceship.select_team
     end
 
     def set_app_details
@@ -170,21 +112,9 @@ class InviteController < ApplicationController
     end
 
     def check_disabled_text
-      if ENV["ITC_CLOSED_TEXT"]
-        @message = ENV["ITC_CLOSED_TEXT"]
+      if boarding_service.itc_closed_text
+        @message = boarding_service.itc_closed_text
         @type = "warning"
       end
-    end
-
-    # @return [Boolean] Is at least one TestFlight beta testing build available?
-    def testing_is_live?
-      app.build_trains.each do |version, train|
-        if train.external_testing_enabled
-          train.builds.each do |build|
-            return true if build.external_testing_enabled
-          end
-        end
-      end
-      return false
     end
 end
