@@ -74,9 +74,13 @@ class BoardingService
       spaceship = Spaceship::Tunes.login(@user, @password)
       spaceship.select_team
 
-      @app ||= Spaceship::Tunes::Application.find(@app_id)
-      error_message << "Could not find app with ID #{app_id}" if @app == nil
-
+      @app ||= Spaceship::Tunes::Application.find(@app_id)      
+      if @app.nil?
+        error_message << "Could not find app with ID #{app_id}"
+        
+        # we cannot continue if @app is nil since we use it later to continue startup validation
+        raise error_message.join("\n")
+      end    
 
       test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
       test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
@@ -85,7 +89,6 @@ class BoardingService
       end
 
       raise error_message.join("\n") if error_message.length > 0
-
     end
 
     def add_tester_to_groups!(tester: nil, app: nil, groups: nil)
