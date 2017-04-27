@@ -37,7 +37,7 @@
           <%= hidden_field_tag :token, '', value: params[:token] %>
         <% else %>
           <%= label_tag(:token, t(:password_label)) %>
-          <%= text_field_tag :token, '', class: "form-control", placeholder: t(:password_placeholder) %><br />
+          <%= password_field_tag :token, '', class: "form-control", placeholder: t(:password_placeholder) %><br />
         <% end %>
       <% end %>
 
