@@ -22,6 +22,10 @@
       "description": "Optional: If you're in multiple teams, enter the name of your iTC team here. Make sure it matches.",
       "required": false
     },
+    "ITC_APP_TESTER_GROUPS": {
+      "description": "Optional: The groups you want the invited to be placed in",
+      "required": false
+    },
     "ITC_TOKEN": {
       "description": "Optional: Set a password to protect your website from random people signing up.",
       "required": false
