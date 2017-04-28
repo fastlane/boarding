@@ -67,9 +67,9 @@ class BoardingService
     def ensure_values
       error_message = []
 
-      error_message << "Environment variable `ITC_APP_ID` required" if @app_id.empty?
-      error_message << "Environment variable `ITC_USER` or `FASTLANE_USER` required" if @user.empty?
-      error_message << "Environment variable `ITC_PASSWORD` or `FASTLANE_PASSWORD`" if @password.empty?
+      error_message << "Environment variable `ITC_APP_ID` required" if @app_id.blank?
+      error_message << "Environment variable `ITC_USER` or `FASTLANE_USER` required" if @user.blank?
+      error_message << "Environment variable `ITC_PASSWORD` or `FASTLANE_PASSWORD`" if @password.blank?
 
       spaceship = Spaceship::Tunes.login(@user, @password)
       spaceship.select_team
