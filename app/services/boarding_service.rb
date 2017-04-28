@@ -67,16 +67,16 @@ class BoardingService
     def ensure_values
       error_message = []
 
-      error_message << "Environment variable `ITC_APP_ID` required" if @app_id.blank?
-      error_message << "Environment variable `ITC_USER` or `FASTLANE_USER` required" if @user.blank?
-      error_message << "Environment variable `ITC_PASSWORD` or `FASTLANE_PASSWORD`" if @password.blank?
+      error_message << "Environment variable `ITC_APP_ID` required" if @app_id.to_s.length == 0
+      error_message << "Environment variable `ITC_USER` or `FASTLANE_USER` required" if @user.to_s.length == 0
+      error_message << "Environment variable `ITC_PASSWORD` or `FASTLANE_PASSWORD`" if @password.to_s.length == 0
+      raise error_message.join("\n") if error_message.length > 0
 
       spaceship = Spaceship::Tunes.login(@user, @password)
       spaceship.select_team
 
-      @app ||= Spaceship::Tunes::Application.find(@app_id)
-      error_message << "Could not find app with ID #{app_id}" if @app == nil
-
+      @app ||= Spaceship::Tunes::Application.find(@app_id)      
+      raise "Could not find app with ID #{app_id}" if @app.nil?
 
       test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
       test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
@@ -85,14 +85,13 @@ class BoardingService
       end
 
       raise error_message.join("\n") if error_message.length > 0
-
     end
 
     def add_tester_to_groups!(tester: nil, app: nil, groups: nil)
       if groups.nil?
-          default_external_group = self.default_external_group
+          default_external_group = app.default_external_group
           if default_external_group.nil?
-            Rails.logger.error "The app #{self.name} does not have a default external group. Please make sure to pass group names to the `:groups` option."
+            Rails.logger.error "The app #{app.name} does not have a default external group. Please make sure to pass group names to the `:groups` option."
           end
           test_flight_groups = [default_external_group]
       else
