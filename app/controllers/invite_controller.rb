@@ -76,7 +76,7 @@ class InviteController < ApplicationController
       Rails.logger.fatal ex.inspect
       Rails.logger.fatal ex.backtrace.join("\n")
 
-      @message = t(:message_error)
+      @message = [t(:message_error), ex.to_s].join(": ")
       @type = "danger"
     end
 
