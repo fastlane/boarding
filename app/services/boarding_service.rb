@@ -76,7 +76,7 @@ class BoardingService
       spaceship.select_team
 
       @app ||= Spaceship::Tunes::Application.find(@app_id)      
-      raise "Could not find app with ID #{app_id}" if @app.to_s.length == 0
+      raise "Could not find app with ID #{app_id}" if @app.nil?
 
       test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
       test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
