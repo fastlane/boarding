@@ -20,11 +20,14 @@ class BoardingService
   def initialize(app_id: ENV["ITC_APP_ID"],
                    user: ENV["ITC_USER"] || ENV["FASTLANE_USER"],
                password: ENV["ITC_PASSWORD"] || ENV["FASTLANE_PASSWORD"],
-          tester_groups: ENV["ITC_APP_TESTER_GROUPS"].to_s.split(/\s*,\s*/))
+          tester_groups: ENV["ITC_APP_TESTER_GROUPS"])
     @app_id = app_id
     @user = user
     @password = password
-    @tester_groups = tester_groups
+
+    groups = tester_groups.to_s.split(/\s*,\s*/)
+    @tester_groups = groups unless groups.empty?
+
     @is_demo = ENV["ITC_IS_DEMO"]
     @itc_token = ENV["ITC_TOKEN"]
     @itc_closed_text = ENV["ITC_CLOSED_TEXT"]
@@ -56,7 +59,8 @@ class BoardingService
     end
 
     if app.apple_id.length > 0
-      Rails.logger.info "Addding tester to application to groups: #{tester_groups.to_s}"
+      groups = tester_groups || ["External Testers"]
+      Rails.logger.info "Addding tester to application in group(s): #{groups.to_s}"
       add_tester_to_groups!(tester: tester, app: app, groups: tester_groups)
       Rails.logger.info "Done"
     end
@@ -78,10 +82,13 @@ class BoardingService
       @app ||= Spaceship::Tunes::Application.find(@app_id)      
       raise "Could not find app with ID #{app_id}" if @app.nil?
 
-      test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
-      test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
-      tester_groups.select do |group_name|
-        error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect." if !test_flight_group_names.include?(group_name)
+      if tester_groups
+        test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
+        test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
+        tester_groups.select do |group_name|
+          next if test_flight_group_names.include?(group_name)
+          error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect."
+        end
       end
 
       raise error_message.join("\n") if error_message.length > 0
