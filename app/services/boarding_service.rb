@@ -24,7 +24,7 @@ class BoardingService
     @app_id = app_id
     @user = user
     @password = password
-    @tester_groups = tester_groups
+    @tester_groups = tester_groups unless tester_groups.empty?
     @is_demo = ENV["ITC_IS_DEMO"]
     @itc_token = ENV["ITC_TOKEN"]
     @itc_closed_text = ENV["ITC_CLOSED_TEXT"]
@@ -56,7 +56,8 @@ class BoardingService
     end
 
     if app.apple_id.length > 0
-      Rails.logger.info "Addding tester to application to groups: #{tester_groups.to_s}"
+      groups = tester_groups || "External Testers"
+      Rails.logger.info "Addding tester to application in group(s): #{groups.to_s}"
       add_tester_to_groups!(tester: tester, app: app, groups: tester_groups)
       Rails.logger.info "Done"
     end
@@ -78,10 +79,12 @@ class BoardingService
       @app ||= Spaceship::Tunes::Application.find(@app_id)      
       raise "Could not find app with ID #{app_id}" if @app.nil?
 
-      test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
-      test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
-      tester_groups.select do |group_name|
-        error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect." if !test_flight_group_names.include?(group_name)
+      unless tester_groups.nil?
+        test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
+        test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
+        tester_groups.select do |group_name|
+            error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect." if !test_flight_group_names.include?(group_name)
+        end
       end
 
       raise error_message.join("\n") if error_message.length > 0
