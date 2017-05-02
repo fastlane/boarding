@@ -82,11 +82,12 @@ class BoardingService
       @app ||= Spaceship::Tunes::Application.find(@app_id)      
       raise "Could not find app with ID #{app_id}" if @app.nil?
 
-      unless tester_groups.nil?
+      if tester_groups
         test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
         test_flight_group_names = test_flight_groups.map { |group| group.name }.to_set
         tester_groups.select do |group_name|
-            error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect." if !test_flight_group_names.include?(group_name)
+          next if test_flight_group_names.include?(group_name)
+          error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect."
         end
       end
 
