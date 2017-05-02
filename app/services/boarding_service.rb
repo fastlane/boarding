@@ -20,11 +20,14 @@ class BoardingService
   def initialize(app_id: ENV["ITC_APP_ID"],
                    user: ENV["ITC_USER"] || ENV["FASTLANE_USER"],
                password: ENV["ITC_PASSWORD"] || ENV["FASTLANE_PASSWORD"],
-          tester_groups: ENV["ITC_APP_TESTER_GROUPS"].to_s.split(/\s*,\s*/))
+          tester_groups: ENV["ITC_APP_TESTER_GROUPS"])
     @app_id = app_id
     @user = user
     @password = password
-    @tester_groups = tester_groups unless tester_groups.empty?
+
+    groups = tester_groups.to_s.split(/\s*,\s*/)
+    @tester_groups = groups unless groups.empty?
+
     @is_demo = ENV["ITC_IS_DEMO"]
     @itc_token = ENV["ITC_TOKEN"]
     @itc_closed_text = ENV["ITC_CLOSED_TEXT"]
@@ -56,7 +59,7 @@ class BoardingService
     end
 
     if app.apple_id.length > 0
-      groups = tester_groups || "External Testers"
+      groups = tester_groups || ["External Testers"]
       Rails.logger.info "Addding tester to application in group(s): #{groups.to_s}"
       add_tester_to_groups!(tester: tester, app: app, groups: tester_groups)
       Rails.logger.info "Done"
