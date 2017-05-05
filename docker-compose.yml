@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+
+  web:
+    build:
+      context: .
+      args:
+        rails_env: development
+    ports:
+      - '3001:3001'
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env'
