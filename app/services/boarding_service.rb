@@ -58,7 +58,7 @@ class BoardingService
     end
 
     begin
-      groups = groups = Spaceship::TestFlight::Group.add_tester_to_groups!(tester: tester, app: app, groups: tester_group_names)
+      groups = Spaceship::TestFlight::Group.add_tester_to_groups!(tester: tester, app: app, groups: tester_group_names)
       if tester.kind_of?(Spaceship::Tunes::Tester::Internal)
         Rails.logger.info "Successfully added tester to app #{app.name}"
       else
