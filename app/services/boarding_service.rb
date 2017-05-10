@@ -36,7 +36,6 @@ class BoardingService
   end
 
   def add_tester(email, first_name, last_name)
-    # tester = Spaceship::Tunes::Tester::External.find_by_app(app.apple_id, email)
     add_tester_response = AddTesterResponse.new
     add_tester_response.type = "danger"
 
@@ -59,7 +58,7 @@ class BoardingService
     end
 
     begin
-      groups = add_tester_to_groups!(tester: tester, app: app, groups: tester_group_names)
+      groups = groups = Spaceship::TestFlight::Group.add_tester_to_groups!(tester: tester, app: app, groups: tester_group_names)
       if tester.kind_of?(Spaceship::Tunes::Tester::Internal)
         Rails.logger.info "Successfully added tester to app #{app.name}"
       else
@@ -153,24 +152,6 @@ class BoardingService
       end
 
       raise error_message.join("\n") if error_message.length > 0
-    end
-
-    def add_tester_to_groups!(tester: nil, app: nil, groups: nil)
-      if groups.nil?
-          default_external_group = app.default_external_group
-          if default_external_group.nil?
-            Rails.logger.error "The app #{app.name} does not have a default external group. Please make sure to pass group names to the `:groups` option."
-          end
-          test_flight_groups = [default_external_group]
-      else
-        test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: app.apple_id) do |group| 
-          groups.include?(group.name) 
-        end
-
-        Rails.logger.error "There are no groups available matching the names passed to the `:groups` option." if test_flight_groups.empty?
-      end
-      
-      test_flight_groups.each { |group| group.add_tester!(tester) }
     end
 
     def testing_is_live?
