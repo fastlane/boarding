@@ -49,6 +49,10 @@
       <%= @message %>
     </p>
   <% end %>
+
+  <p class="footer">
+    Powered by <a href="https://fastlane.tools" target="_blank">fastlane</a>
+  </p>
 </div>
 
 <style type="text/css">
@@ -62,5 +66,15 @@
   }
   #submit {
     margin-bottom: 20px;
+  }
+  .footer {
+    color: #888;
+  }
+  @media screen and (min-width: 800px) {
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      right: 25px;
+    }
   }
 </style>
