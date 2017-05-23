@@ -67,7 +67,7 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 
 ##### Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
 
-[Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
+[Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/fastlane-tools)
 
 # Getting Started
 
