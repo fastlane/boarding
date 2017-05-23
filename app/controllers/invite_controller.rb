@@ -29,7 +29,7 @@ class InviteController < ApplicationController
       return
     end
     
-    email = params[:email]
+    email = params[:email] || ""
     first_name = params[:first_name]
     last_name = params[:last_name]
 
