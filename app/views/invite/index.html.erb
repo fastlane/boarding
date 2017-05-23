@@ -42,7 +42,7 @@
       <% end %>
 
       <br />
-      <%= submit_tag t(:get_beta_access), class: 'btn btn-lg btn-primary btn-block', id: "submit" %>
+      <%= submit_tag t(:get_beta_access), class: 'btn btn-lg btn-primary btn-block', id: "submit", onclick: "didSubmit()" %>
     <% end %>
   <% else %>
     <p class="alert alert-<%= @type %>">
@@ -50,6 +50,18 @@
     </p>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  function didSubmit() {
+    $("#submit").val("<%= t(:loading) %>...")
+
+    // We want to make it clear the server is working for its money
+    // However if we disable the button right away here, the form won't be triggered
+    setTimeout(function() {
+      $("#submit").prop('disabled', true)
+    }, 50)
+  }
+</script>
 
 <style type="text/css">
   .appIcon {

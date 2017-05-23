@@ -35,3 +35,4 @@ en:
   message_success_pending: "Successfully added you as a tester. You'll be notified once the next build is available"
   message_email_exists: "Email address is already registered"
   message_error: "Something went wrong, please contact the application owner"
+  loading: "Loading"
