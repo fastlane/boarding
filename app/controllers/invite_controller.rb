@@ -28,7 +28,7 @@ class InviteController < ApplicationController
       render :index
       return
     end
-    
+
     email = params[:email]
     first_name = params[:first_name]
     last_name = params[:last_name]
@@ -55,7 +55,7 @@ class InviteController < ApplicationController
         return
       end
     end
-    
+
     if email.length == 0
       render :index
       return
