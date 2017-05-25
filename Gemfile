@@ -15,6 +15,10 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
 
+# Use font awesome as the fancy icontastic library
+
+gem "font-awesome-rails"
+
 # Added by Felix
 gem 'fastlane', '>= 2.33.0', '< 3.0.0'
 
