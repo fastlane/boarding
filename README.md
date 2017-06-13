@@ -13,17 +13,19 @@
   <a href="https://github.com/fastlane/fastlane/tree/master/sigh">sigh</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/produce">produce</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/cert">cert</a> &bull;
-  <a href="https://github.com/fastlane/spaceship">spaceship</a> &bull;
+  <a href="https://github.com/fastlane/fastlane/tree/master/spaceship">spaceship</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/pilot">pilot</a> &bull;
   <b>boarding</b> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/gym">gym</a> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/scan">scan</a>
 </p>
+
 -------
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/fastlane/boarding/master/assets/BoardingHuge.png" width="650">
 </p>
+
 -------
 
 [![Twitter: @FastlaneTools](https://img.shields.io/badge/contact-@FastlaneTools-blue.svg?style=flat)](https://twitter.com/FastlaneTools)
@@ -34,6 +36,7 @@ Get in contact with the developers on Twitter: [@FastlaneTools](https://twitter.
 
 
 -------
+
 <p align="center">
     <a href="#whats-boarding">Why?</a> &bull;
     <a href="#getting-started">Getting Started</a> &bull;
@@ -62,9 +65,9 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 
 ### Example
 
-#####Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
+##### Take a look at this live example page: [boarding.herokuapp.com](https://boarding.herokuapp.com)
 
-[Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/krausefx)
+[Like this tool? Be the first to know about updates and new fastlane tools](https://tinyletter.com/fastlane-tools)
 
 # Getting Started
 
@@ -131,8 +134,9 @@ More information about this automation process can be found [here](https://kraus
 If you want to change the design, layout or even add new features:
 
 - Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
-- Clone your application using `heroku git:clone --app [heroku_app_name]`
+- Clone your application using `heroku git:clone --app [heroku_app_name]` (it will be an empty repo)
 - `cd [heroku_app_name]`
+- `git pull https://github.com/fastlane/boarding`
 - Modify the content, in particular the files that are described above.
 - Test it locally by running `ITC_USER="email" ITC_... rails s` and opening [http://127.0.0.1:3000](http://127.0.0.1:3000)
 - Commit the changes
@@ -147,7 +151,7 @@ From time to time there will be updates to `boarding`. There are 2 ways to updat
 ### Recommended: Using the terminal
 
 - Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
-- Clone your application using `heroku git:clone --app [heroku_app_name]`
+- Clone your application using `heroku git:clone --app [heroku_app_name]` (it will be an empty repo)
 - `cd [heroku_app_name]`
 - `git pull https://github.com/fastlane/boarding`
 - `git push`
