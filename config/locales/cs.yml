@@ -30,7 +30,7 @@ cs:
   password_placeholder: "Heslo"
   get_beta_access: "Získat přístup k beta verzi"
   message_invalid_password: "Neplatné heslo, kontaktujte prosím provozovatele aplikace"
-  message_demo_page: "Toto je ukázková stránka. Tady by byla potvrzující zpráva s informacemi o TestFlight"
+  message_demo_page: "Toto je ukázková stránka. Tady by byla potvrzující zpráva s informacemi o TestFlight emailu"
   message_success_live: "Byl(a) jste úspěšně přidán(a) jako tester(ka). Zkontrolujte svou emailovou schránku kvůli pozvánce"
   message_success_pending: "Byl(a) jste úspěšně přidán(a) jako tester(ka). Budeme Vás informovat, jakmile bude k dispozici další testovací verze"
   message_email_exists: "Emailová adresa je již z dřívějška registrována"
