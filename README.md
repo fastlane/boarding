@@ -114,6 +114,10 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 
 With Heroku you can easily use your own domain, follow [this guide](https://devcenter.heroku.com/articles/custom-domains).
 
+## Alternative Setup Options
+
+- Docker image: [emcniece/docker-boarding](https://github.com/emcniece/docker-boarding)
+
 # How does this work?
 
 `boarding` is part of [fastlane](https://fastlane.tools), which helps you automate everything you usually do manually as an iOS developer.
