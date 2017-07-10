@@ -118,7 +118,7 @@ class BoardingService
         tester = Spaceship::Tunes::Tester::Internal.find_by_app(app.apple_id, email)
         tester ||= Spaceship::Tunes::Tester::External.find_by_app(app.apple_id, email)
       else
-        raise "Account #{current_user.email} doesn't have a role that is allowed to administer app testers, current roles: #{current_user.roles}"
+        raise "Account #{current_user.email_address} doesn't have a role that is allowed to administer app testers, current roles: #{current_user.roles}"
         tester = nil
       end
 
