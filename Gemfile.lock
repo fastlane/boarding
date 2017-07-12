@@ -109,6 +109,8 @@ GEM
       xcodeproj (>= 1.4.4, < 2.0.0)
       xcpretty (>= 0.2.4, < 1.0.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     gh_inspector (1.0.3)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -268,6 +270,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   fastlane (>= 2.33.0, < 3.0.0)
+  font-awesome-rails
   http_accept_language (~> 2.0.5)
   jquery-rails
   puma
@@ -279,4 +282,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.14.6
+   1.15.0

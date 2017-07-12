@@ -29,6 +29,7 @@ de:
   password_label: "Passwort:"
   password_placeholder: "Passwort"
   get_beta_access: "Beta-Zugang anfordern"
+  please_wait: "Bitte warten"
   message_invalid_password: "Ungültiges Passwort, bitte kontaktieren Sie den Hersteller der Applikation"
   message_demo_page: "Dies ist eine Demoseite. Hier würde die Bestätigung mit Informationen über die TestFlight E-Mail stehen"
   message_success_live: "Sie wurden erfolgreich als Tester hinzugefügt. Überprüfen Sie Ihren Posteingang für eine Einladung"
