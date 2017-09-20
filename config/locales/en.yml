@@ -36,3 +36,4 @@ en:
   message_email_exists: "Email address is already registered"
   message_error: "Something went wrong, please contact the application owner"
   loading: "Loading"
+  imprint: "Imprint"
