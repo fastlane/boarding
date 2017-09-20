@@ -16,6 +16,7 @@ class BoardingService
   attr_accessor :is_demo
   attr_accessor :itc_token
   attr_accessor :itc_closed_text
+  attr_accessor :imprint_url
 
   def initialize(app_id: ENV["ITC_APP_ID"],
                    user: ENV["ITC_USER"] || ENV["FASTLANE_USER"],
@@ -31,6 +32,7 @@ class BoardingService
     @is_demo = ENV["ITC_IS_DEMO"]
     @itc_token = ENV["ITC_TOKEN"]
     @itc_closed_text = ENV["ITC_CLOSED_TEXT"]
+    @imprint_url = ENV["IMPRINT_URL"]
 
     ensure_values
   end
