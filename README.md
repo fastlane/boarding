@@ -17,7 +17,9 @@
   <a href="https://github.com/fastlane/fastlane/tree/master/pilot">pilot</a> &bull;
   <b>boarding</b> &bull;
   <a href="https://github.com/fastlane/fastlane/tree/master/gym">gym</a> &bull;
-  <a href="https://github.com/fastlane/fastlane/tree/master/scan">scan</a>
+  <a href="https://github.com/fastlane/fastlane/tree/master/scan">scan</a> &bull;
+  <a href="https://github.com/fastlane/fastlane/tree/master/match">match</a> &bull;
+  <a href="https://github.com/fastlane/fastlane/tree/master/precheck">precheck</a>
 </p>
 
 -------
