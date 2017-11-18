@@ -146,13 +146,15 @@ class BoardingService
       raise error_message.join("\n") if error_message.length > 0
     end
 
-    def testing_is_live?
-      app.build_trains.each do |version, train|
-        if train.external_testing_enabled
-          train.builds.each do |build|
-            return true if build.external_testing_enabled
-          end
+    def testing_is_live? # TODO: clean this when Spaceship::TestFlight::BuildTrains has more attributes
+      app.build_trains(platform: 'ios').values.each do |trains|
+        # if train.external_testing_enabled
+        #   train.builds.each do |build|
+        trains.each do |build|
+          return true if build.active?
         end
+        #   end
+        # end
       end
       return false
     end
