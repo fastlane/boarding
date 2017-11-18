@@ -42,7 +42,9 @@ class BoardingService
     add_tester_response.type = "danger"
 
     tester = find_app_tester(email: email, app: app)
-    if tester
+    if tester # TODO: check what groups this tester needs to be added to
+      # Spaceship::TestFlight::Group.perform_for_groups_in_app(app: app, groups: tester_group_names) - tester.groups
+        
       add_tester_response.message = t(:message_email_exists)
     else
       tester = create_tester(
@@ -51,12 +53,6 @@ class BoardingService
         last_name: last_name,
         app: app
       )
-      if true || testing_is_live? # TODO: remove true and test new train system
-        add_tester_response.message = t(:message_success_live)
-      else
-        add_tester_response.message = t(:message_success_pending)
-      end
-      add_tester_response.type = "success"
     end
 
     begin
@@ -72,6 +68,13 @@ class BoardingService
           Rails.logger.info "Successfully added tester to the default tester group in app: #{app.name}"
         end
       end
+
+      if testing_is_live?
+        add_tester_response.message = t(:message_success_live)
+      else
+        add_tester_response.message = t(:message_success_pending)
+      end
+      add_tester_response.type = "success"
 
     rescue => ex
       Rails.logger.error "Could not add #{tester.email} to app: #{app.name}"
