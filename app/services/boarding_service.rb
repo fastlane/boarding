@@ -42,7 +42,9 @@ class BoardingService
     add_tester_response.type = "danger"
 
     tester = find_app_tester(email: email, app: app)
-    if tester
+    if tester # TODO: check what groups this tester needs to be added to
+      # Spaceship::TestFlight::Group.perform_for_groups_in_app(app: app, groups: tester_group_names) - tester.groups
+        
       add_tester_response.message = t(:message_email_exists)
     else
       tester = create_tester(
@@ -51,12 +53,6 @@ class BoardingService
         last_name: last_name,
         app: app
       )
-      if testing_is_live?
-        add_tester_response.message = t(:message_success_live)
-      else
-        add_tester_response.message = t(:message_success_pending)
-      end
-      add_tester_response.type = "success"
     end
 
     begin
@@ -73,6 +69,13 @@ class BoardingService
         end
       end
 
+      if testing_is_live?
+        add_tester_response.message = t(:message_success_live)
+      else
+        add_tester_response.message = t(:message_success_pending)
+      end
+      add_tester_response.type = "success"
+
     rescue => ex
       Rails.logger.error "Could not add #{tester.email} to app: #{app.name}"
       raise ex
@@ -85,18 +88,12 @@ class BoardingService
 
     def create_tester(email: nil, first_name: nil, last_name: nil, app: nil)
       current_user = Spaceship::Members.find(Spaceship::Tunes.client.user)
-      if current_user.admin?
-        tester = Spaceship::Tunes::Tester::External.create!(email: email,
-                                                       first_name: first_name,
-                                                        last_name: last_name)
-        Rails.logger.info "Successfully added tester: #{email} to your account"
-      elsif current_user.app_manager?
-
+      if current_user.admin? || current_user.app_manager?
         Spaceship::TestFlight::Tester.create_app_level_tester(app_id: app.apple_id,
                                                           first_name: first_name,
                                                            last_name: last_name,
                                                                email: email)
-        tester = Spaceship::Tunes::Tester::External.find_by_app(app.apple_id, email)
+        tester = Spaceship::TestFlight::Tester.find(app_id: app.apple_id, email: email)
         Rails.logger.info "Successfully added tester: #{email} to app: #{app.name}"
       else
         raise "Current account doesn't have permission to create a tester"
@@ -110,15 +107,11 @@ class BoardingService
 
     def find_app_tester(email: nil, app: nil)
       current_user = Spaceship::Members.find(Spaceship::Tunes.client.user)
-      if current_user.admin?
-        tester = Spaceship::Tunes::Tester::Internal.find(email)
-        tester ||= Spaceship::Tunes::Tester::External.find(email)
-      elsif current_user.app_manager?
+      if current_user.admin? || current_user.app_manager?
         unless app
-          raise "Account #{current_user.email_address} is only an 'App Manager' and therefore you must also define what app this tester (#{email}) should be added to"
+          raise "You must define what app this tester (#{email}) should be added to"
         end
-        tester = Spaceship::Tunes::Tester::Internal.find_by_app(app.apple_id, email)
-        tester ||= Spaceship::Tunes::Tester::External.find_by_app(app.apple_id, email)
+        tester = Spaceship::TestFlight::Tester.find(app_id: app.apple_id, email: email)
       else
         raise "Account #{current_user.email_address} doesn't have a role that is allowed to administer app testers, current roles: #{current_user.roles}"
         tester = nil
@@ -156,13 +149,15 @@ class BoardingService
       raise error_message.join("\n") if error_message.length > 0
     end
 
-    def testing_is_live?
-      app.build_trains.each do |version, train|
-        if train.external_testing_enabled
-          train.builds.each do |build|
-            return true if build.external_testing_enabled
-          end
+    def testing_is_live? # TODO: clean this when Spaceship::TestFlight::BuildTrains has more attributes
+      app.build_trains(platform: 'ios').values.each do |trains|
+        # if train.external_testing_enabled
+        #   train.builds.each do |build|
+        trains.each do |build|
+          return true if build.active?
         end
+        #   end
+        # end
       end
       return false
     end
