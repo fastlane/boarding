@@ -37,9 +37,10 @@ class BoardingService
     ensure_values
   end
 
-  def add_tester(email, first_name, last_name)
+  def add_tester(email, first_name, last_name, custom_group = nil)
     add_tester_response = AddTesterResponse.new
     add_tester_response.type = "danger"
+    custom_group ||= tester_group_names
 
     tester = find_app_tester(email: email, app: app)
     if tester
@@ -60,12 +61,12 @@ class BoardingService
     end
 
     begin
-      groups = Spaceship::TestFlight::Group.add_tester_to_groups!(tester: tester, app: app, groups: tester_group_names)
+      groups = Spaceship::TestFlight::Group.add_tester_to_groups!(tester: tester, app: app, groups: custom_group)
       if tester.kind_of?(Spaceship::Tunes::Tester::Internal)
         Rails.logger.info "Successfully added tester to app #{app.name}"
       else
         # tester was added to the group(s) in the above add_tester_to_groups() call, now we need to let the user know which group(s)
-        if tester_group_names
+        if custom_group
           group_names = groups.map(&:name).join(", ")
           Rails.logger.info "Successfully added tester to group(s): #{group_names} in app: #{app.name}"
         else

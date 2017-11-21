@@ -3,6 +3,7 @@ class InviteController < ApplicationController
   before_action :set_app_details
   before_action :check_disabled_text
   before_action :check_imprint_url
+  before_action :group_drop_down
 
   skip_before_filter :verify_authenticity_token
 
@@ -89,7 +90,15 @@ class InviteController < ApplicationController
 
   private
     def create_and_add_tester(email, first_name, last_name)
-      add_tester_response = boarding_service.add_tester(email, first_name, last_name)
+      custom_group = params["groups"]["selected"]
+      unless @groups_for_dropdown.include?(custom_group)
+        # this is important, as it would otherwise allow users to add themselves
+        # to groups that are not white-listed by the developer using the
+        # `ITC_GROUPS_DROPDOWN_LIST` env variable
+        Rails.logger.info("Tried to access group #{custom_group}, but not in the list of available groups #{@groups_for_dropdown}")
+        custom_group = nil
+      end
+      add_tester_response = boarding_service.add_tester(email, first_name, last_name, custom_group)
       @message = add_tester_response.message
       @type = add_tester_response.type
     end
@@ -123,5 +132,9 @@ class InviteController < ApplicationController
       if boarding_service.imprint_url
         @imprint_url = boarding_service.imprint_url
       end
+    end
+
+    def group_drop_down
+      @groups_for_dropdown = ENV["ITC_GROUPS_DROPDOWN_LIST"].to_s.length > 0 ? ENV["ITC_GROUPS_DROPDOWN_LIST"].split(";") : []
     end
 end
