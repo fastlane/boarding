@@ -41,6 +41,11 @@
         <% end %>
       <% end %>
 
+      <% if @groups_for_dropdown && @groups_for_dropdown.count > 1 %>
+        <%= label_tag(:group, t(:group)) %>
+        <%= select("groups", "selected", @groups_for_dropdown) %>
+      <% end %>
+
       <br />
       <%= submit_tag t(:get_beta_access), class: 'btn btn-lg btn-primary btn-block', id: "submit" %>
     <% end %>
@@ -86,5 +91,10 @@
       bottom: 10px;
       right: 25px;
     }
+  }
+  select {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 35px;
   }
 </style>
