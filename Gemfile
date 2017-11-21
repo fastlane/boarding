@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 # Added by Felix
-gem 'fastlane', '>= 2.65.0', '< 3.0.0'
+gem 'fastlane', '>= 2.66.0', '< 3.0.0'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
