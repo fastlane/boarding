@@ -1,5 +1,7 @@
 require 'spaceship'
 class InviteController < ApplicationController
+  include ApiMode if ENV["API_MODE"] == "enabled"
+
   before_action :set_app_details
   before_action :check_disabled_text
   before_action :check_imprint_url
@@ -29,7 +31,7 @@ class InviteController < ApplicationController
       render :index
       return
     end
-    
+
     email = params[:email]
     first_name = params[:first_name]
     last_name = params[:last_name]
@@ -56,7 +58,7 @@ class InviteController < ApplicationController
         return
       end
     end
-    
+
     if email.length == 0
       render :index
       return
