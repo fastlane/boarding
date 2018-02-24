@@ -1,0 +1,177 @@
+{
+  "$schema":
+    "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webapp_name": {
+      "defaultValue": "myWebApp",
+      "type": "string",
+      "metadata": {
+        "description":
+          "name of your WebApp in Azure. This is also used as the url part (https://<webapp_name>.azurewebsites.net/) so make sure it is unique  (Required)"
+      }
+    },
+    "webapp_plan": {
+      "type": "string",
+      "defaultValue": "B1",
+      "allowedValues": ["B1", "B2", "B3", "S1", "S2", "S3"],
+      "metadata": {
+        "description":
+          "WebApp plan size B(asic)1 - 3, S(tandard)1 -3  (Required)"
+      }
+    },
+    "ITC_USER": {
+      "defaultValue": null,
+      "type": "string",
+      "metadata": {
+        "description": "iTunes Connect username (Required)"
+      }
+    },
+    "ITC_PASSWORD": {
+      "defaultValue": null,
+      "type": "securestring",
+      "metadata": {
+        "description": "iTunes Connect password  (Required)"
+      }
+    },
+    "ITC_APP_ID": {
+      "defaultValue": null,
+      "type": "string",
+      "metadata": {
+        "description":
+          "The Apple ID or Bundle Identifier of your app  (Required)"
+      }
+    }
+  },
+  "variables": {
+    "webapp_plan_name": "[concat(parameters('webapp_name'), 'plan')]",
+    "ProjectTag": "fastlane_boarding",
+    "webapp_plan_tier":
+      "[if(equals(first(parameters('webapp_plan')), 'B'), 'Basic', if(equals(first(parameters('webapp_plan')), 'S'), 'Standard', 'ERROR'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2016-09-01",
+      "name": "[variables('webapp_plan_name')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "Project": "[variables('ProjectTag')]"
+      },
+      "kind": "linux",
+      "sku": {
+        "name": "[parameters('webapp_plan')]",
+        "tier": "[variables('webapp_plan_tier')]",
+        "size": "[parameters('webapp_plan')]",
+        "family": "[first(parameters('webapp_plan'))]",
+        "capacity": 1
+      },
+      "properties": {
+        "name": "[variables('webapp_plan_name')]",
+        "perSiteScaling": false,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0,
+        "reserved": true
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2016-08-01",
+      "name": "[parameters('webapp_name')]",
+      "location": "[resourceGroup().location]",
+      "kind": "app,linux",
+      "resources": [
+        {
+          "apiVersion": "2016-08-01",
+          "name": "appsettings",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('webapp_name'))]"
+          ],
+          "tags": {
+            "Project": "[variables('ProjectTag')]"
+          },
+          "properties": {
+            "WEBSITES_PORT": "3000",
+            "WEBSITES_ENABLE_APP_SERVICE_STORAGE": "false",
+            "DOCKER_ENABLE_CI": "false",
+            "ITC_USER": "[parameters('ITC_USER')]",
+            "ITC_PASSWORD": "[parameters('ITC_PASSWORD')]",
+            "ITC_APP_ID": "[parameters('ITC_APP_ID')]"
+          }
+        }
+      ],
+      "tags": {
+        "Project": "[variables('ProjectTag')]"
+      },
+      "properties": {
+        "enabled": true,
+        "serverFarmId":
+          "[resourceId('Microsoft.Web/serverfarms', variables('webapp_plan_name'))]",
+        "reserved": true,
+        "siteConfig": {
+          "linuxFxVersion": "DOCKER|emcniece/docker-boarding",
+          "alwaysOn": true,
+          "numberOfWorkers": 1,
+          "defaultDocuments": [
+            "Default.htm",
+            "Default.html",
+            "Default.asp",
+            "index.htm",
+            "index.html",
+            "iisstart.htm",
+            "default.aspx",
+            "index.php",
+            "hostingstart.html"
+          ],
+          "netFrameworkVersion": "v4.6",
+          "requestTracingEnabled": false,
+          "remoteDebuggingEnabled": false,
+          "remoteDebuggingVersion": "VS2017",
+          "httpLoggingEnabled": true,
+          "logsDirectorySizeLimit": 35,
+          "detailedErrorLoggingEnabled": true,
+          "scmType": "None",
+          "use32BitWorkerProcess": true,
+          "managedPipelineMode": "Integrated",
+          "virtualApplications": [
+            {
+              "virtualPath": "/",
+              "physicalPath": "site\\wwwroot",
+              "preloadEnabled": true
+            }
+          ],
+          "winAuthAdminState": 0,
+          "winAuthTenantState": 0,
+          "customAppPoolIdentityAdminState": false,
+          "customAppPoolIdentityTenantState": false,
+          "runtimeADUser": null,
+          "runtimeADUserPassword": null,
+          "loadBalancing": "LeastRequests",
+          "routingRules": [],
+          "experiments": {
+            "rampUpRules": []
+          },
+          "autoHealEnabled": false,
+          "vnetName": "",
+          "siteAuthEnabled": false
+        },
+        "clientAffinityEnabled": true,
+        "clientCertEnabled": false,
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('webapp_plan_name'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "webapp_name": {
+      "type": "string",
+      "value": "[parameters('webapp_name')]"
+    }
+  }
+}
