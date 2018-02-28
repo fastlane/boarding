@@ -2,6 +2,7 @@ require 'spaceship'
 class InviteController < ApplicationController
   before_action :set_app_details
   before_action :check_disabled_text
+  before_action :check_imprint_url
 
   skip_before_filter :verify_authenticity_token
 
@@ -115,6 +116,12 @@ class InviteController < ApplicationController
       if boarding_service.itc_closed_text
         @message = boarding_service.itc_closed_text
         @type = "warning"
+      end
+    end
+
+    def check_imprint_url
+      if boarding_service.imprint_url
+        @imprint_url = boarding_service.imprint_url
       end
     end
 end

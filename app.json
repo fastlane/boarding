@@ -33,6 +33,10 @@
     "GA_PROPERTY_ID": {
       "description": "Optional: Configure Google Analytics to track visitors on your website.",
       "required": false
+    },
+    "IMPRINT_URL": {
+      "description": "Optional: URL to imprint. The link is shown on the invite page.",
+      "required": false
     }
   }
 }
