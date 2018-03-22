@@ -16,12 +16,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 # Added by Felix
-gem 'fastlane', '>= 2.66.0', '< 3.0.0'
+gem 'fastlane', '>= 2.86.2', '< 3.0.0'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
 # nokogiri 1.8.1 seems to be problematic
-gem 'nokogiri', '<= 1.8.0'
+gem 'nokogiri', '<= 1.8.1'
 
 gem 'http_accept_language', '~> 2.0.5'
 
