@@ -170,7 +170,7 @@ GEM
     multipart-post (2.0.0)
     nanaimo (0.2.3)
     naturally (2.1.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     os (0.9.6)
     plist (3.4.0)
@@ -295,7 +295,7 @@ DEPENDENCIES
   fastlane (>= 2.86.2, < 3.0.0)
   http_accept_language (~> 2.0.5)
   jquery-rails
-  nokogiri (<= 1.8.1)
+  nokogiri (>= 1.8.1, < 2.0.0)
   puma
   rails (~> 4.2.8)
   rails_12factor
