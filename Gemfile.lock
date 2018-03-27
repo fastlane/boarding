@@ -292,6 +292,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.5)
   byebug
   coffee-rails (~> 4.1.0)
+  dotenv
   fastlane (>= 2.86.2, < 3.0.0)
   http_accept_language (~> 2.0.5)
   jquery-rails

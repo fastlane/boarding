@@ -214,6 +214,25 @@ For further troubleshooting, please got to [Azure App Service on Linux FAQ](http
 
 Special thanks to [@lee_moonan](https://twitter.com/lee_moonan) for designing the awesome logo.
 
+# Development Setup
+1. `gem install bundler`
+1. `bundle install`
+1. Create a `.env.local` file with the following contents:
+    ```
+    # Required
+    ITC_APP_ID=<your_app_id>
+    ITC_USER=<your_email>
+    ITC_PASSWORD=<your_password>
+
+    # Optional
+    FASTLANE_ITC_TEAM_NAME=<your_team_name>
+    ITC_APP_TESTER_GROUPS=<your_groups>
+    ITC_TOKEN=<your_token>
+    GA_PROPERTY_ID=<your_ga_property_id>
+    IMPRINT_URL=<your_url>
+    ```
+1. `bundle exec rails s`
+
 # Code of Conduct
 
 Help us keep `boarding` open and inclusive. Please read and follow our [Code of Conduct](https://github.com/fastlane/code-of-conduct).
