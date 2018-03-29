@@ -73,7 +73,7 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 
 Assuming you already have an [Azure](https://www.azure.com/) account follow those steps:
 
-* [![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://deploy.azure.com/?repository=https://github.com/dersia/boarding/blob/master)
+* [![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://deploy.azure.com/?repository=https://github.com/fastlane/boarding/blob/master)
 * Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
 * It can take up to 5 minutes until everything is loaded.
 
