@@ -25,6 +25,8 @@ gem 'nokogiri', '>= 1.8.1', '< 2.0.0'
 
 gem 'http_accept_language', '~> 2.0.5'
 
+gem 'dotenv'
+
 group :production do
   gem 'puma'
   gem 'rails_12factor'
