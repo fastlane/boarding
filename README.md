@@ -71,17 +71,17 @@ Thanks to [spaceship.airforce](https://spaceship.airforce) (oh well, I really ta
 
 # Getting Started
 
-Assuming you already have an [Azure](https://www.azure.com/) account follow those steps:
-
-* [![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://deploy.azure.com/?repository=https://github.com/fastlane/boarding)
-* Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
-* It can take up to 5 minutes until everything is loaded.
-
 Assuming you already have a [Heroku](https://www.heroku.com/) account follow those steps:
 
 * [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy?template=https://github.com/fastlane/boarding)
 * Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
 * Click on `View` once the setup is complete and start sharing the URL
+
+Assuming you already have an [Azure](https://www.azure.com/) account follow those steps:
+
+* [![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://deploy.azure.com/?repository=https://github.com/fastlane/boarding)
+* Enter your iTunes Connect credentials and the bundle identifier of your app. This will all be stored on your own Heroku instance as environment variables
+* It can take up to 5 minutes until everything is loaded.
 
 `boarding` does all kinds of magic for you, like fetching the app name and app icon.
 
