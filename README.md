@@ -122,7 +122,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 
 With Heroku you can easily use your own domain, follow [this guide](https://devcenter.heroku.com/articles/custom-domains).
 
-With Azure you can easily use your own domain, follow [this guid](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+With Azure you can easily use your own domain, follow [this guide](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ## Alternative Setup Options
 
