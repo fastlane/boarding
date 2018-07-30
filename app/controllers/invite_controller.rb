@@ -9,6 +9,7 @@ class InviteController < ApplicationController
   def index
     if boarding_service.user and boarding_service.password
       # default
+      @email = params[:email]
     else
       render 'environment_error'
     end
