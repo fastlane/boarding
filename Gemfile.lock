@@ -174,7 +174,7 @@ GEM
     plist (3.4.0)
     public_suffix (2.0.5)
     puma (3.12.0)
-    rack (1.6.10)
+    rack (1.6.11)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.10)
@@ -297,6 +297,7 @@ DEPENDENCIES
   loofah (>= 2.2.3)
   nokogiri (>= 1.8.1, < 2.0.0)
   puma
+  rack (>= 1.6.11)
   rails (~> 4.2.8)
   rails_12factor
   sass-rails (~> 5.0)
@@ -305,4 +306,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
