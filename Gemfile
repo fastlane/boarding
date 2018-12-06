@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 
 # ruby '2.2.3'
 
+# Updated for CVE-2018-16476: https://nvd.nist.gov/vuln/detail/CVE-2018-16476.
+gem 'activejob', '>= 4.2.11'
+
 gem 'rack', '>= 1.6.11'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.8'
+gem 'rails', '~> 5.0.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
