@@ -112,7 +112,6 @@ class InviteController < ApplicationController
       @title = @metadata[:title]
 
       tabIcon = ENV["TAB_ICON"].to_s
-
       if tabIcon.to_s.length == 0
         @tabIcon = "/BoardingIcon.ico"
       else

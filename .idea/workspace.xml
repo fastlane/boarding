@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30f8bff2-2d0b-4ea4-bcef-bfda92bfaf4a" name="Default Changelist" comment="" />
+    <list default="true" id="30f8bff2-2d0b-4ea4-bcef-bfda92bfaf4a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/controllers/invite_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/invite_controller.rb" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/log/" />
@@ -20,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/invite_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="116" column="37" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
+            <state relative-caret-position="500">
+              <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
               <folding>
                 <element signature="e#1704#1732#0" expanded="true" />
                 <element signature="e#1934#1955#0" expanded="true" />
@@ -344,12 +346,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551618379538</updated>
-      <workItem from="1551618382926" duration="9128000" />
+      <workItem from="1551618382926" duration="9393000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9128000" />
+    <option name="totallyTimeSpent" value="9393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -496,8 +498,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/invite_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="116" column="37" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
+        <state relative-caret-position="500">
+          <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
           <folding>
             <element signature="e#1704#1732#0" expanded="true" />
             <element signature="e#1934#1955#0" expanded="true" />
