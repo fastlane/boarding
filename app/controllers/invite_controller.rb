@@ -110,6 +110,14 @@ class InviteController < ApplicationController
     def set_app_details
       @metadata = app_metadata
       @title = @metadata[:title]
+
+      tabIcon = ENV["TAB_ICON"].to_s
+
+      if tabIcon.to_s.length == 0
+        @tabIcon = "/BoardingIcon.ico"
+      else
+        @tabIcon = tabIcon
+      end
     end
 
     def check_disabled_text
