@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30f8bff2-2d0b-4ea4-bcef-bfda92bfaf4a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/invite_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/invite_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -19,7 +19,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/invite_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="500">
@@ -28,6 +28,18 @@
                 <element signature="e#1704#1732#0" expanded="true" />
                 <element signature="e#1934#1955#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="707">
+                <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -105,11 +117,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -130,6 +137,7 @@
         <option value="$PROJECT_DIR$/app/views/invite/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/invite_controller.rb" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -346,19 +354,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551618379538</updated>
-      <workItem from="1551618382926" duration="9393000" />
+      <workItem from="1551618382926" duration="9672000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9393000" />
+    <option name="totallyTimeSpent" value="9672000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20695971" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20695971" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -504,6 +512,16 @@
             <element signature="e#1704#1732#0" expanded="true" />
             <element signature="e#1934#1955#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="707">
+            <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
