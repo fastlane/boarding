@@ -17,3 +17,5 @@
 /tmp
 
 .env.local
+.DS_Store
+.idea
