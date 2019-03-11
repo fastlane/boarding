@@ -149,7 +149,7 @@ If you want to change the design, layout or even add new features:
 
 * Install the [Heroku toolbelt](https://toolbelt.heroku.com/) and `heroku login`
 * Clone your application using `heroku git:clone --app [heroku_app_name]` (it will be an empty repo)
-  * You may see a message saying `warning: You appear to have cloned an empty repository.`. If so, just continue on with the instructions. This is a known known [Heroku issue](https://help.heroku.com/XOBUHLKQ/why-do-i-see-a-message-you-appear-to-have-cloned-an-empty-repository-when-using-heroku-git-clone)
+  * You may see a message saying `warning: You appear to have cloned an empty repository.`. If so, just continue on with the instructions. This is a known [Heroku issue](https://help.heroku.com/XOBUHLKQ/why-do-i-see-a-message-you-appear-to-have-cloned-an-empty-repository-when-using-heroku-git-clone)
 * `cd [heroku_app_name]`
 * `git pull https://github.com/fastlane/boarding`
 * Modify the content, in particular the files that are described above.
