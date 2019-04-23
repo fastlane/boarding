@@ -15,6 +15,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 
+# Vulnerable versions: >= 5.0.0, <= 5.0.7.1 
+gem "actionview", ">= 5.0.7.2"
+
 # Specify a sub-dependency of Rails
 # As there is a security vulnerability
 # in old versions of the library
@@ -24,7 +27,7 @@ gem "loofah", ">= 2.2.3"
 
 gem 'jquery-rails'
 
-gem 'fastlane', '>= 2.117.1', '< 3.0.0'
+gem 'fastlane', '>= 2.120.0', '< 3.0.0'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 
