@@ -1,1 +1,1 @@
-BOARDING_SERVICE = BoardingService.new
+BOARDING_SERVICE = ::BoardingService.new
