@@ -46,13 +46,15 @@ class BoardingService
 
     begin
       @test_flight_groups.each do |group|
-        beta_group_id = group["id"]
-        post_bulk_beta_tester_assignments(
-          beta_group_id: beta_group_id,
+        beta_group_id = group.id
+
+        beta_testers = [{
           email: email,
           first_name: first_name,
           last_name: last_name
-        )
+        }]
+
+        Spaceship::ConnectAPI.post_bulk_beta_tester_assignments(beta_group_id: beta_group_id, beta_testers: beta_testers)
       end
       add_tester_response.message = t(:message_success_live)
       add_tester_response.type = "success"
@@ -65,48 +67,6 @@ class BoardingService
   end
 
   private
-
-    # This is temporary until new Spaceship::ConnectAPI is complete
-    def post_bulk_beta_tester_assignments(beta_group_id: nil, email: nil, first_name: "", last_name: "")
-      body = {
-        data: {
-          attributes: {
-            betaTesters: [
-              {
-                email: email,
-                errors: [],
-                firstName: first_name,
-                lastName: last_name
-              }
-            ]
-          },
-          relationships: {
-            betaGroup: {
-              data: {
-                id: beta_group_id,
-                type: "betaGroups"
-              }
-            } 
-          },
-          type: "bulkBetaTesterAssignments"
-        }
-      }
-
-      client = Spaceship::ConnectAPI::Base.client
-      response = client.request(:post) do |req|
-        req.url("bulkBetaTesterAssignments")
-        req.body = body.to_json
-        req.headers['Content-Type'] = 'application/json'
-      end
-
-      puts "response: #{response.status}"
-
-      if (200...300).cover?(response.status)
-        return
-      end
-
-      raise "Error got #{response.status}"
-    end
 
     def ensure_values
       error_message = []
@@ -123,15 +83,14 @@ class BoardingService
       raise "Could not find app with ID #{app_id}" if @app.nil?
 
       if tester_group_names
-        client = Spaceship::ConnectAPI::Base.client
-        @test_flight_groups = client.get_beta_groups(filter: { app: @app.apple_id }).select do |group|
-          tester_group_names.include?(group["attributes"]["name"])
+        @test_flight_groups = Spaceship::ConnectAPI.get_beta_groups(filter: { app: @app.apple_id }).select do |group|
+          tester_group_names.include?(group.name)
         end
 
-        test_flight_group_names = @test_flight_groups.map { |group| group["attributes"]["name"] }.to_set
+        test_flight_group_names = @test_flight_groups.map { |group| group.name }.to_set
         tester_group_names.select do |group_name|
           next if test_flight_group_names.include?(group_name)
-          error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect."
+          error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in App Store Connect."
         end
       end
 
