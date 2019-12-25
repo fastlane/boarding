@@ -116,6 +116,7 @@ To secure your webpage, you only have to set the `ITC_TOKEN` environment variabl
 * `ITC_CLOSED_TEXT` Set this text to temporary disable enrollment of new beta testers
 * `RESTRICTED_DOMAIN` Set this domain (in the format `domain.com`) to restrict users with emails in another domain from signing up. This list supports multiple domains by setting it to a comma delimited list (`domain1.com,domain2.com`)
 * `FASTLANE_ITC_TEAM_NAME` If you're in multiple teams, enter the name of your iTC team here. Make sure it matches.
+* `FASTLANE_SESSION` You need to provide a [pregenerated session](https://docs.fastlane.tools/best-practices/continuous-integration/#spaceauth) via fastlane spaceauth if you have 2-factor authentication enabled and want to use any actions that communicates with App Store Connect.
 * `IMPRINT_URL` If you want a link to an imprint to be shown on the invite page.
 
 ## Custom Domain
