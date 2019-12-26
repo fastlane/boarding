@@ -23,7 +23,7 @@
       "required": false
     },
     "FASTLANE_SESSION": {
-      "description": "Optional: You need to provide a pregenerated session via fastlane spaceauth if you have 2-factor authentication enabled and want to use any actions that communicates with App Store Connect.",
+      "description": "Optional: You need to provide a pregenerated session via `fastlane spaceauth` if you have 2-factor authentication enabled and want to use any actions that communicates with App Store Connect.",
       "required": false
     },
     "ITC_APP_TESTER_GROUPS": {
