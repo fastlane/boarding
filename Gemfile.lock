@@ -190,7 +190,7 @@ GEM
     plist (3.5.0)
     public_suffix (2.0.5)
     puma (3.12.1)
-    rack (2.0.7)
+    rack (2.1.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.7.2)
