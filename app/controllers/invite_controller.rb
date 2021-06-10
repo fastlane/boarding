@@ -2,12 +2,14 @@ require 'spaceship'
 class InviteController < ApplicationController
   before_action :set_app_details
   before_action :check_disabled_text
+  before_action :check_imprint_url
 
   skip_before_action :verify_authenticity_token
 
   def index
     if boarding_service.user and boarding_service.password
       # default
+      @email = params[:email]
     else
       render 'environment_error'
     end
@@ -98,12 +100,15 @@ class InviteController < ApplicationController
     BOARDING_SERVICE
   end
 
-  def app_metadata
-    Rails.cache.fetch('appMetadata', expires_in: 10.minutes) do
-      {
-        icon_url: boarding_service.app.app_icon_preview_url,
-        title: boarding_service.app.name
-      }
+  def set_app_details
+    @metadata = app_metadata
+    @title = @metadata[:title]
+
+    tabIcon = ENV["TAB_ICON"].to_s
+    if tabIcon.to_s.length == 0
+      @tabIcon = "/BoardingIcon.ico"
+    else
+      @tabIcon = tabIcon
     end
   end
 
@@ -118,4 +123,11 @@ class InviteController < ApplicationController
       @type = "warning"
     end
   end
+
+  def check_imprint_url
+    if boarding_service.imprint_url
+      @imprint_url = boarding_service.imprint_url
+    end
+  end
+
 end

@@ -22,6 +22,10 @@
       "description": "Optional: If you're in multiple teams, enter the name of your iTC team here. Make sure it matches.",
       "required": false
     },
+    "FASTLANE_SESSION": {
+      "description": "Optional: You need to provide a pregenerated session via `fastlane spaceauth` if you have 2-factor authentication enabled and want to use any actions that communicates with App Store Connect.",
+      "required": false
+    },
     "ITC_APP_TESTER_GROUPS": {
       "description": "Optional: The groups you want the invited to be placed in",
       "required": false
@@ -32,6 +36,10 @@
     },
     "GA_PROPERTY_ID": {
       "description": "Optional: Configure Google Analytics to track visitors on your website.",
+      "required": false
+    },
+    "IMPRINT_URL": {
+      "description": "Optional: URL to imprint. The link is shown on the invite page.",
       "required": false
     }
   }

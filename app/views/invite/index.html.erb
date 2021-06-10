@@ -30,7 +30,7 @@
       <%= label_tag(:last_name, t(:last_name_label)) %>
       <%= text_field_tag :last_name, '', class: "form-control", placeholder: t(:last_name_placeholder) %><br />
       <%= label_tag(:email, t(:email_label), class: "required") %>
-      <%= email_field_tag :email, '', class: "form-control", placeholder: t(:email_placeholder) %><br />
+      <%= email_field_tag :email, @email, class: "form-control", placeholder: t(:email_placeholder) %><br />
 
       <% if ENV["ITC_TOKEN"] %>
         <% if params[:token] %>
@@ -51,6 +51,9 @@
   <% end %>
 
   <p class="footer">
+    <% if @imprint_url %>
+      <%= link_to t(:imprint), @imprint_url, target: "_blank" %> |
+    <% end %>
     Powered by <a href="https://fastlane.tools" target="_blank">fastlane</a>
   </p>
 </div>
