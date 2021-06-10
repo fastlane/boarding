@@ -4,7 +4,7 @@ class InviteController < ApplicationController
   before_action :check_disabled_text
   before_action :check_imprint_url
 
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def index
     if boarding_service.user and boarding_service.password
@@ -30,7 +30,7 @@ class InviteController < ApplicationController
       render :index
       return
     end
-    
+
     email = params[:email]
     first_name = params[:first_name]
     last_name = params[:last_name]
@@ -41,7 +41,7 @@ class InviteController < ApplicationController
         if domains.count == 1
           @message = "Sorry! Early access is currently restricted to people within the #{domains.first} domain."
         else
-          @message = "Sorry! Early access is currently restricted to people within the following domains: (#{domains.join(", ")})"
+          @message = "Sorry! Early access is currently restricted to people within the following domains: (#{domains.join(', ')})"
         end
         @type = "warning"
         render :index
@@ -57,7 +57,7 @@ class InviteController < ApplicationController
         return
       end
     end
-    
+
     if email.length == 0
       render :index
       return
@@ -89,47 +89,45 @@ class InviteController < ApplicationController
   end
 
   private
-    def create_and_add_tester(email, first_name, last_name)
-      add_tester_response = boarding_service.add_tester(email, first_name, last_name)
-      @message = add_tester_response.message
-      @type = add_tester_response.type
-    end
 
-    def boarding_service
-      BOARDING_SERVICE
-    end
+  def create_and_add_tester(email, first_name, last_name)
+    add_tester_response = boarding_service.add_tester(email, first_name, last_name)
+    @message = add_tester_response.message
+    @type = add_tester_response.type
+  end
 
-    def app_metadata
-      Rails.cache.fetch('appMetadata', expires_in: 10.minutes) do
-        {
-          icon_url: boarding_service.app.app_icon_preview_url,
-          title: boarding_service.app.name
-        }
-      end
-    end
+  def boarding_service
+    BOARDING_SERVICE
+  end
 
-    def set_app_details
-      @metadata = app_metadata
-      @title = @metadata[:title]
+  def set_app_details
+    @metadata = app_metadata
+    @title = @metadata[:title]
 
-      tabIcon = ENV["TAB_ICON"].to_s
-      if tabIcon.to_s.length == 0
-        @tabIcon = "/BoardingIcon.ico"
-      else
-        @tabIcon = tabIcon
-      end
+    tabIcon = ENV["TAB_ICON"].to_s
+    if tabIcon.to_s.length == 0
+      @tabIcon = "/BoardingIcon.ico"
+    else
+      @tabIcon = tabIcon
     end
+  end
 
-    def check_disabled_text
-      if boarding_service.itc_closed_text
-        @message = boarding_service.itc_closed_text
-        @type = "warning"
-      end
-    end
+  def set_app_details
+    @metadata = app_metadata
+    @title = @metadata[:title]
+  end
 
-    def check_imprint_url
-      if boarding_service.imprint_url
-        @imprint_url = boarding_service.imprint_url
-      end
+  def check_disabled_text
+    if boarding_service.itc_closed_text
+      @message = boarding_service.itc_closed_text
+      @type = "warning"
     end
+  end
+
+  def check_imprint_url
+    if boarding_service.imprint_url
+      @imprint_url = boarding_service.imprint_url
+    end
+  end
+
 end

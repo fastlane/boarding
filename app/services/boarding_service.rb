@@ -3,7 +3,7 @@ require "spaceship"
 class AddTesterResponse
   attr_accessor :message
   attr_accessor :type
-end  
+end
 
 class BoardingService
   include AbstractController::Translation
@@ -20,9 +20,9 @@ class BoardingService
   attr_accessor :imprint_url
 
   def initialize(app_id: ENV["ITC_APP_ID"],
-                   user: ENV["ITC_USER"] || ENV["FASTLANE_USER"],
-               password: ENV["ITC_PASSWORD"] || ENV["FASTLANE_PASSWORD"],
-     tester_group_names: ENV["ITC_APP_TESTER_GROUPS"])
+                 user: ENV["ITC_USER"] || ENV["FASTLANE_USER"],
+                 password: ENV["ITC_PASSWORD"] || ENV["FASTLANE_PASSWORD"],
+                 tester_group_names: ENV["ITC_APP_TESTER_GROUPS"])
     @app_id = app_id
     @user = user
     @password = password
@@ -67,34 +67,55 @@ class BoardingService
   end
 
   private
+  def ensure_values
+    error_message = []
 
-    def ensure_values
-      error_message = []
+    error_message << "Environment variable `ITC_APP_ID` required" if @app_id.to_s.length == 0
+    error_message << "Environment variable `ITC_USER` or `FASTLANE_USER` required" if @user.to_s.length == 0
+    error_message << "Environment variable `ITC_PASSWORD` or `FASTLANE_PASSWORD`" if @password.to_s.length == 0
+    raise error_message.join("\n") if error_message.length > 0
 
-      error_message << "Environment variable `ITC_APP_ID` required" if @app_id.to_s.length == 0
-      error_message << "Environment variable `ITC_USER` or `FASTLANE_USER` required" if @user.to_s.length == 0
-      error_message << "Environment variable `ITC_PASSWORD` or `FASTLANE_PASSWORD`" if @password.to_s.length == 0
-      raise error_message.join("\n") if error_message.length > 0
+    spaceship = Spaceship::Tunes.login(@user, @password)
+    spaceship.select_team
 
-      spaceship = Spaceship::Tunes.login(@user, @password)
-      spaceship.select_team
+    @app ||= Spaceship::Tunes::Application.find(@app_id)      
+    raise "Could not find app with ID #{app_id}" if @app.nil?
 
-      @app ||= Spaceship::Tunes::Application.find(@app_id)      
-      raise "Could not find app with ID #{app_id}" if @app.nil?
-
-      if tester_group_names
-        @test_flight_groups = Spaceship::ConnectAPI.get_beta_groups(filter: { app: @app.apple_id }).select do |group|
-          tester_group_names.include?(group.name)
-        end
-
-        test_flight_group_names = @test_flight_groups.map { |group| group.name }.to_set
-        tester_group_names.select do |group_name|
-          next if test_flight_group_names.include?(group_name)
-          error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in App Store Connect."
-        end
+    if tester_group_names
+      @test_flight_groups = Spaceship::ConnectAPI.get_beta_groups(filter: { app: @app.apple_id }).select do |group|
+        tester_group_names.include?(group.name)
       end
 
-      raise error_message.join("\n") if error_message.length > 0
+      test_flight_group_names = @test_flight_groups.map { |group| group.name }.to_set
+      tester_group_names.select do |group_name|
+        next if test_flight_group_names.include?(group_name)
+        error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in App Store Connect."
+      end
+    end
+    return tester
+  end
+
+  def ensure_values
+    error_message = []
+
+    error_message << "Environment variable `ITC_APP_ID` required" if @app_id.to_s.length == 0
+    error_message << "Environment variable `ITC_USER` or `FASTLANE_USER` required" if @user.to_s.length == 0
+    error_message << "Environment variable `ITC_PASSWORD` or `FASTLANE_PASSWORD`" if @password.to_s.length == 0
+    raise error_message.join("\n") if error_message.length > 0
+
+    spaceship = Spaceship::Tunes.login(@user, @password)
+    spaceship.select_team
+
+    @app ||= Spaceship::Tunes::Application.find(@app_id)
+    raise "Could not find app with ID #{app_id}" if @app.nil?
+
+    if tester_group_names
+      test_flight_groups = Spaceship::TestFlight::Group.filter_groups(app_id: @app.apple_id)
+      test_flight_group_names = test_flight_groups.map(&:name).to_set
+      tester_group_names.select do |group_name|
+        next if test_flight_group_names.include?(group_name)
+        error_message << "TestFlight missing group `#{group_name}`, You need to first create this group in iTunes Connect."
+      end
     end
 
     def testing_is_live? # TODO: clean this when Spaceship::TestFlight::BuildTrains has more attributes
@@ -107,6 +128,7 @@ class BoardingService
         #   end
         # end
       end
-      return false
     end
+    return false
+  end
 end
